@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./Menu.scss";
 
 const links = [
   { path: "/", title: "Home" },
@@ -19,7 +20,7 @@ export default function Menu(props) {
   ));
 
   return (
-    <nav>
+    <nav className='Menu'>
       <ul>{linkItems}</ul>
     </nav>
   );

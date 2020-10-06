@@ -1,0 +1,9 @@
+:root {
+  --header-height: 3rem;
+}
+
+.Header {
+  position: sticky;
+  height: var(--header-height);
+  border: 1px solid red;
+}
