@@ -3,7 +3,10 @@ import {
   EDIT_CART,
   REMOVE_FROM_CART,
   CLEAR_CART,
+  LOAD_PRODUCTS,
 } from "./actionTypes";
+
+import loadData from "../helpers/loadData";
 
 export const add = (id, num) => ({
   type: ADD_TO_CART,
@@ -23,3 +26,12 @@ export const remove = (id) => ({
 export const clear = () => ({
   type: CLEAR_CART,
 });
+
+export const loadProducts = () => async (dispatch) => {
+  const products = await loadData("../productData.json");
+
+  return dispatch({
+    type: LOAD_PRODUCTS,
+    payload: products,
+  });
+};
