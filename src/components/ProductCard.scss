@@ -1,0 +1,17 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.product-card__img-box img {
+  width: 100%;
+}
+
+.product-card__footer .product-price {
+  color: red;
+  &::before {
+    content: "$";
+  }
+}
