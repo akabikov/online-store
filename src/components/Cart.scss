@@ -1,6 +1,12 @@
 .Cart {
   position: absolute;
   height: 100%;
+  width: 20rem;
   right: 0;
   border: 1px solid red;
+  background-color: lightblue;
+  // display: none;
+  ul {
+    list-style-type: none;
+  }
 }
