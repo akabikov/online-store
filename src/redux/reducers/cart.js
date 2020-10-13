@@ -10,7 +10,7 @@ const EMPTY_CART = { keys: [], products: {} };
 export default function (state = EMPTY_CART, action) {
   const { keys, products } = state;
 
-  const editCart = (id, num, previousNum) => {
+  const editCart = (id, num, previousNum = 0) => {
     if (!(Number.isInteger(num) && num > 0))
       throw new Error("Invalid number of items");
     return {
@@ -23,9 +23,8 @@ export default function (state = EMPTY_CART, action) {
   };
 
   const reducers = {
-    [ADD_TO_CART]: ({ id, num = 1 }) =>
-      editCart(id, num, products[id]?.num || 0),
-    [EDIT_CART]: ({ id, num }) => editCart(id, num, 0),
+    [ADD_TO_CART]: ({ id, num = 1 }) => editCart(id, num, products[id]?.num),
+    [EDIT_CART]: ({ id, num }) => editCart(id, num),
     [REMOVE_FROM_CART]: ({ id }) => {
       const { [id]: deletedId, ...restProducts } = products;
       return {
