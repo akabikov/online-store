@@ -29,7 +29,7 @@ export default function (state = EMPTY_CART, action) {
     [REMOVE_FROM_CART]: ({ id }) => {
       const { [id]: deletedId, ...restProducts } = products;
       return {
-        keys: keys.filter((el) => el.id !== id),
+        keys: keys.filter((key) => key !== id),
         products: restProducts,
       };
     },
