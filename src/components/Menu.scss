@@ -1,8 +1,14 @@
 .Menu {
   position: absolute;
   height: 100%;
+  width: 20rem;
   border: 1px solid red;
+  background-color: white;
   ul {
     list-style: none;
   }
+}
+
+.hidden {
+  display: none;
 }

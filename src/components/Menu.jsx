@@ -10,7 +10,7 @@ const links = [
   { path: "/about", title: "About" },
 ];
 
-export default function Menu(props) {
+export default function Menu({ isOpen }) {
   const linkItems = links.map(({ path, title }) => (
     <li key={path}>
       <NavLink exact to={path}>
@@ -20,7 +20,7 @@ export default function Menu(props) {
   ));
 
   return (
-    <nav className='Menu'>
+    <nav className={"Menu" + (isOpen ? "" : " hidden")}>
       <ul>{linkItems}</ul>
     </nav>
   );

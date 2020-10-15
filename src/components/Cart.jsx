@@ -4,7 +4,7 @@ import { edit, remove, clear } from "../redux/actions";
 import CartItem from "./CartItem";
 import "./Cart.scss";
 
-function Cart({ cart, products, edit, remove, clear }) {
+function Cart({ isOpen, cart, products, edit, remove, clear }) {
   const cartItems = cart.keys.map((id) => (
     <CartItem
       key={id}
@@ -22,7 +22,7 @@ function Cart({ cart, products, edit, remove, clear }) {
   );
 
   return (
-    <div className='Cart'>
+    <div className={"Cart" + (isOpen ? "" : " hidden")}>
       <p>Cart</p>
       <ul>{cartItems}</ul>
       <p>{`Cart total: ${cartSum}`}</p>
