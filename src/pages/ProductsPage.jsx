@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ProductCard from "../components/ProductCard";
 import { loadProducts, add } from "../redux/actions";
+import { getProductsByCompany } from "../redux/selectors";
 import "./ProductPage.scss";
 
 function ProductsPage({ loadProducts, products, add }) {
@@ -10,9 +11,11 @@ function ProductsPage({ loadProducts, products, add }) {
     fetchProducts();
   }, [loadProducts]);
 
-  const productList = Object.entries(products).map(([id, product]) => (
-    <ProductCard key={id} id={id} {...product} add={add} />
-  ));
+  const productList =
+    products &&
+    Object.entries(products).map(([id, product]) => (
+      <ProductCard key={id} id={id} {...product} add={add} />
+    ));
 
   return (
     <div>
@@ -21,6 +24,7 @@ function ProductsPage({ loadProducts, products, add }) {
   );
 }
 
-const mapStateToProps = ({ products }) => ({ products });
+const mapStateToProps = (state) =>
+  getProductsByCompany(state, { companyList: new Set(["samsung", "htc"]) });
 
 export default connect(mapStateToProps, { loadProducts, add })(ProductsPage);
