@@ -34,3 +34,23 @@ export const getProductsBySearch = createSelector(
         : products,
   })
 );
+
+const priceRange = (_, props) => props.price;
+
+export const getProductsByPrice = createSelector(
+  getProducts,
+  priceRange,
+  (products, price) => ({
+    products:
+      price?.max > 0 && price?.min <= price?.max
+        ? Object.keys(products).reduce((result, id) => {
+            if (
+              +products[id].price >= price.min &&
+              +products[id].price <= price.max
+            )
+              result[id] = products[id];
+            return result;
+          }, {})
+        : products,
+  })
+);
