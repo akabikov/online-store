@@ -4,7 +4,7 @@ const getProducts = (state) => state.products;
 
 const companyList = (_, props) => props.companyList;
 
-const getProductsByCompany = createSelector(
+export const getProductsByCompany = createSelector(
   getProducts,
   companyList,
   (products, companyList) => ({
@@ -19,4 +19,18 @@ const getProductsByCompany = createSelector(
   })
 );
 
-export { getProductsByCompany };
+const searchQuery = (_, props) => props.searchQuery;
+
+export const getProductsBySearch = createSelector(
+  getProducts,
+  searchQuery,
+  (products, query) => ({
+    products:
+      query?.length > 0
+        ? Object.keys(products).reduce((result, id) => {
+            if (products[id].title.includes(query)) result[id] = products[id];
+            return result;
+          }, {})
+        : products,
+  })
+);
