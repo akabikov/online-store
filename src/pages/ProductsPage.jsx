@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ProductCard from "../components/ProductCard";
 import { loadProducts, add } from "../redux/actions";
-import {
-  getProductsByCompany,
-  getProductsBySearch,
-  getProductsByPrice,
-} from "../redux/selectors";
+import { getProductsByFilters } from "../redux/selectors";
 import "./ProductPage.scss";
 
 function ProductsPage({ loadProducts, products, add }) {
@@ -29,8 +25,10 @@ function ProductsPage({ loadProducts, products, add }) {
 }
 
 const mapStateToProps = (state) =>
-  getProductsByPrice(state, { price: { min: 20, max: 60 } });
-// getProductsBySearch(state, { searchQuery: "camera" });
-// getProductsByCompany(state, { companyList: new Set(["samsung", "htc"]) });
+  getProductsByFilters(state, {
+    company: new Set(["samsung", "htc"]),
+    price: { min: 20, max: 50 },
+    search: "black",
+  });
 
 export default connect(mapStateToProps, { loadProducts, add })(ProductsPage);
