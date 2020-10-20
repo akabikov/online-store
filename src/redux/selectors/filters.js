@@ -5,8 +5,8 @@ const filters = {
   },
   price: {
     validateFilter: (price) => price?.max > 0 && price?.min <= price?.max,
-    applyFilter: (price, product) =>
-      +product?.price >= price?.min && +product?.price <= price?.max,
+    applyFilter: ({ min = 0, max = Infinity }, product) =>
+      +product?.price >= min && +product?.price <= max,
   },
   search: {
     validateFilter: (query) => query?.length > 0,
