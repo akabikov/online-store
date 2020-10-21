@@ -2,15 +2,16 @@ import { createSelector } from "reselect";
 import { applyFilters } from "./filters";
 
 const getProducts = (state) => state.products;
+const getProductsEntries = createSelector(getProducts, (products) =>
+  Object.entries(products)
+);
 
 export const getProductsByFilters = createSelector(
-  getProducts,
+  getProductsEntries,
   (_, props) => props,
-  (products, rules) => ({
+  (productsEntries, rules) => ({
     products: Object.fromEntries(
-      Object.entries(products).filter(([, product]) =>
-        applyFilters(rules, product)
-      )
+      productsEntries.filter(([, product]) => applyFilters(rules, product))
     ),
   })
 );
