@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
 
-function PriceFilter(props) {
+function PriceFilter({ updateFilters }) {
   const [price, setPrice] = useState({ min: "", max: "" });
+
+  useEffect(() => {
+    updateFilters({ price });
+  }, [price, updateFilters]);
 
   return (
     <fieldset>

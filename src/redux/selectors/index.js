@@ -14,9 +14,11 @@ export const getCompanies = createSelector(
     ).sort()
 );
 
+const getFilters = (state) => state.filters;
+
 export const getProductsByFilters = createSelector(
   getProductsEntries,
-  (_, props) => props,
+  getFilters,
   (productsEntries, rules) => ({
     products: Object.fromEntries(
       productsEntries.filter(([, product]) => applyFilters(rules, product))

@@ -4,14 +4,18 @@ import { getCompanies } from "../../../redux/selectors";
 import BrandItem from "./BrandItem";
 import "./style.scss";
 
-function BrandFilter({ companies }) {
-  const [selectedBrands, setSelectedBrands] = useState([]);
+function BrandFilter({ companies, updateFilters }) {
+  const [selectedBrands, setSelectedBrands] = useState({});
   console.log("BrandFilter component rendered");
 
+  useEffect(() => {
+    updateFilters({ company: selectedBrands });
+  }, [selectedBrands, updateFilters]);
+
   const toggleCheck = (company) =>
-    setSelectedBrands({
-      ...selectedBrands,
-      [company]: !selectedBrands[company],
+    setSelectedBrands((selectedBrands) => {
+      const { [company]: deleted, ...rest } = selectedBrands;
+      return deleted ? rest : { ...selectedBrands, [company]: true };
     });
 
   const companiesList = companies.map((company) => (

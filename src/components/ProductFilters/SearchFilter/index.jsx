@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
 
-function SearchFilter(props) {
+function SearchFilter({ updateFilters }) {
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    updateFilters({ search: query });
+  }, [query, updateFilters]);
+
   return (
     <div>
       <label htmlFor='search'>Search</label>

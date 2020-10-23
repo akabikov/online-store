@@ -1,9 +1,9 @@
 const filters = {
   company: (companyList, { company }) =>
-    companyList.has(company) || companyList.size > 0,
-  price: ({ min = 0, max = Infinity }, { price }) =>
-    +price >= min && +price <= max,
-  search: (query, { title }) => title.includes(query),
+    !Object.keys(companyList).length || companyList[company],
+  price: ({ min, max }, { price }) =>
+    +price >= +min && +price <= (+max || Infinity),
+  search: (query, { title }) => !query || title.includes(query),
 };
 
 export const applyFilters = (rules, product) =>

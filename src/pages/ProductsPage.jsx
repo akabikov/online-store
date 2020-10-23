@@ -27,10 +27,13 @@ function ProductsPage({ loadProducts, products, add }) {
 }
 
 const mapStateToProps = (state) =>
-  getProductsByFilters(state, {
-    company: new Set(["samsung", "htc"]),
-    price: { min: 20, max: 50 },
-    search: "black",
-  });
+  getProductsByFilters(
+    state
+    // , {
+    // company: new Set(["samsung", "htc"]),
+    // price: { min: 20, max: 50 },
+    // search: "black",
+    // }
+  );
 
 export default connect(mapStateToProps, { loadProducts, add })(ProductsPage);
