@@ -5,7 +5,9 @@ function PriceFilter({ updateFilters }) {
   const [price, setPrice] = useState({ min: "", max: "" });
 
   useEffect(() => {
-    updateFilters({ price });
+    updateFilters({
+      price: { min: Number(price.min), max: Number(price.max) },
+    });
   }, [price, updateFilters]);
 
   return (
