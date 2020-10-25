@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { applyFilters } from "./filters";
+import { applyFilters } from "./filteringRules";
 
 const getProducts = (state) => state.products;
 const getProductsEntries = createSelector(getProducts, (products) =>

@@ -1,4 +1,4 @@
-const filters = {
+const rules = {
   company: (companyList, { company }) =>
     !Object.keys(companyList).length || companyList[company],
   price: ({ min, max }, { price }) =>
@@ -6,9 +6,9 @@ const filters = {
   search: (query, { title }) => !query || title.includes(query),
 };
 
-export const applyFilters = (rules, product) =>
-  Object.entries(rules).reduce(
-    (commonCondition, [ruleName, ruleValue]) =>
-      commonCondition && filters[ruleName]?.(ruleValue, product),
+export const applyFilters = (filters, product) =>
+  Object.entries(filters).reduce(
+    (commonCondition, [filterName, filterValue]) =>
+      commonCondition && rules[filterName]?.(filterValue, product),
     true
   );
