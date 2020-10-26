@@ -21,12 +21,22 @@ function BrandFilter({ companies, filteredCompanies, updateFilters }) {
       return deleted ? rest : { ...selectedBrands, [company]: true };
     });
 
+  const selectAll = () =>
+    setSelectedBrands(
+      companies.reduce((obj, company) => {
+        obj[company] = true;
+        return obj;
+      }, {})
+    );
+
+  const unselectAll = () => setSelectedBrands({});
+
   const companiesList = companies.map((company) => (
     <BrandItem
       key={company}
       label={company}
       isChecked={selectedBrands[company]}
-      isDisabled={!filteredCompanies.has(company)}
+      // isDisabled={!filteredCompanies.has(company)}
       toggle={toggleCheck}
     />
   ));
@@ -34,6 +44,8 @@ function BrandFilter({ companies, filteredCompanies, updateFilters }) {
   return (
     <fieldset>
       <legend>Brands</legend>
+      <BrandItem label='select all' toggle={selectAll} />
+      <BrandItem label='unselect all' toggle={unselectAll} />
       {companiesList}
     </fieldset>
   );
@@ -41,7 +53,7 @@ function BrandFilter({ companies, filteredCompanies, updateFilters }) {
 
 const mapStateToProps = (state) => ({
   companies: getCompanies(state),
-  filteredCompanies: getFilteredProductsCompanies(state),
+  // filteredCompanies: getFilteredProductsCompanies(state),
 });
 
 export default connect(mapStateToProps)(BrandFilter);
