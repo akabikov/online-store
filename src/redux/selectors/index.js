@@ -19,9 +19,8 @@ const getFilters = (state) => state.filters;
 export const getProductsByFilters = createSelector(
   getProductsEntries,
   getFilters,
-  (productsEntries, rules) => ({
-    products: Object.fromEntries(
-      productsEntries.filter(([, product]) => applyFilters(rules, product))
-    ),
-  })
+  (productsEntries, rules) =>
+    productsEntries
+      .filter(([, product]) => applyFilters(rules, product))
+      .map(([id, product]) => ({ id, ...product }))
 );

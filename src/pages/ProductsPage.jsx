@@ -14,7 +14,7 @@ function ProductsPage({ loadProducts, products, add }) {
 
   const productList =
     products &&
-    Object.entries(products).map(([id, product]) => (
+    products.map(({ id, ...product }) => (
       <ProductCard key={id} id={id} {...product} add={add} />
     ));
 
@@ -26,14 +26,6 @@ function ProductsPage({ loadProducts, products, add }) {
   );
 }
 
-const mapStateToProps = (state) =>
-  getProductsByFilters(
-    state
-    // , {
-    // company: new Set(["samsung", "htc"]),
-    // price: { min: 20, max: 50 },
-    // search: "black",
-    // }
-  );
+const mapStateToProps = (state) => ({ products: getProductsByFilters(state) });
 
 export default connect(mapStateToProps, { loadProducts, add })(ProductsPage);
