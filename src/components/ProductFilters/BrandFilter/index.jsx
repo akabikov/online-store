@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getCompanies } from "../../../redux/selectors";
+import {
+  getCompanies,
+  getFilteredProductsCompanies,
+} from "../../../redux/selectors";
 import BrandItem from "./BrandItem";
 import "./style.scss";
 
-function BrandFilter({ companies, updateFilters }) {
+function BrandFilter({ companies, filteredCompanies, updateFilters }) {
   const [selectedBrands, setSelectedBrands] = useState({});
   console.log("BrandFilter component rendered");
 
@@ -23,6 +26,7 @@ function BrandFilter({ companies, updateFilters }) {
       key={company}
       label={company}
       isChecked={selectedBrands[company]}
+      isDisabled={!filteredCompanies.has(company)}
       toggle={toggleCheck}
     />
   ));
@@ -35,6 +39,9 @@ function BrandFilter({ companies, updateFilters }) {
   );
 }
 
-const mapStateToProps = (state) => ({ companies: getCompanies(state) });
+const mapStateToProps = (state) => ({
+  companies: getCompanies(state),
+  filteredCompanies: getFilteredProductsCompanies(state),
+});
 
 export default connect(mapStateToProps)(BrandFilter);

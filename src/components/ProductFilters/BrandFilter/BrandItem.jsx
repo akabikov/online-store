@@ -1,6 +1,6 @@
 import React from "react";
 
-function BrandItem({ label, isChecked = false, toggle }) {
+function BrandItem({ label, isChecked = false, isDisabled, toggle }) {
   return (
     <div>
       <label>
@@ -8,6 +8,7 @@ function BrandItem({ label, isChecked = false, toggle }) {
           type='checkbox'
           name={label}
           checked={isChecked}
+          disabled={isDisabled}
           onChange={() => toggle(label)}
         />
         {label}

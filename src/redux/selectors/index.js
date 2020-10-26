@@ -24,3 +24,8 @@ export const getProductsByFilters = createSelector(
       .filter(([, product]) => applyFilters(rules, product))
       .map(([id, product]) => ({ id, ...product }))
 );
+
+export const getFilteredProductsCompanies = createSelector(
+  getProductsByFilters,
+  (filteredProducts) => new Set(filteredProducts.map(({ company }) => company))
+);
