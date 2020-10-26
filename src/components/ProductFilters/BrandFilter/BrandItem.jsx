@@ -8,7 +8,7 @@ function BrandItem({ label, isChecked = false, isDisabled, toggle }) {
           type='checkbox'
           name={label}
           checked={isChecked}
-          disabled={isDisabled}
+          // disabled={isDisabled}
           onChange={() => toggle(label)}
         />
         {label}
