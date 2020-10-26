@@ -29,3 +29,15 @@ export const getFilteredProductsCompanies = createSelector(
   getProductsByFilters,
   (filteredProducts) => new Set(filteredProducts.map(({ company }) => company))
 );
+
+export const getFilteredProductsPriceRange = createSelector(
+  getProductsByFilters,
+  (filteredProducts) =>
+    filteredProducts.reduce(
+      ({ min, max }, { price }) => ({
+        min: price < min ? price : min,
+        max: price > max ? price : max,
+      }),
+      { min: Infinity, max: 0 }
+    )
+);
