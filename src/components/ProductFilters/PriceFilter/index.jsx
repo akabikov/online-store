@@ -21,7 +21,7 @@ function PriceFilter({ availableRange, updateFilters }) {
         name='price-min'
         id='price-min'
         min='0'
-        placeholder={availableRange.min}
+        placeholder={availableRange.min || ""}
         value={price.min}
         onChange={({ target: { value } }) => setPrice({ ...price, min: value })}
       />
@@ -31,7 +31,7 @@ function PriceFilter({ availableRange, updateFilters }) {
         name='price-max'
         id='price-max'
         min='0'
-        placeholder={availableRange.max}
+        placeholder={availableRange.max || ""}
         value={price.max}
         onChange={({ target: { value } }) => setPrice({ ...price, max: value })}
       />
