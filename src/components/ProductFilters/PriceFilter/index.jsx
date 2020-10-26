@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { getFilteredProductsPriceRange } from "../../../redux/selectors";
 import "./style.scss";
 
+const INIT_STATE = { min: "", max: "" };
+
 function PriceFilter({ availableRange, updateFilters }) {
-  const [price, setPrice] = useState({ min: "", max: "" });
+  const [price, setPrice] = useState(INIT_STATE);
 
   useEffect(() => {
     updateFilters({
@@ -35,6 +37,9 @@ function PriceFilter({ availableRange, updateFilters }) {
         value={price.max}
         onChange={({ target: { value } }) => setPrice({ ...price, max: value })}
       />
+      <button type='reset' onClick={() => setPrice(INIT_STATE)}>
+        Reset
+      </button>
     </fieldset>
   );
 }
