@@ -2,27 +2,21 @@ import { createSelector } from "reselect";
 import { applyFilters } from "./filteringRules";
 
 const getProducts = (state) => state.products;
-const getProductsEntries = createSelector(getProducts, (products) =>
-  Object.entries(products)
+const getProductsArray = createSelector(getProducts, (products) =>
+  Object.entries(products).map(([id, product]) => ({ id, ...product }))
 );
 
-export const getCompanies = createSelector(
-  getProductsEntries,
-  (productsEntries) =>
-    Array.from(
-      new Set(productsEntries.map(([, { company }]) => company))
-    ).sort()
+export const getCompanies = createSelector(getProductsArray, (products) =>
+  Array.from(new Set(products.map(({ company }) => company))).sort()
 );
 
 const getFilters = (state) => state.filters;
 
 export const getProductsByFilters = createSelector(
-  getProductsEntries,
+  getProductsArray,
   getFilters,
-  (productsEntries, rules) =>
-    productsEntries
-      .filter(([, product]) => applyFilters(rules, product))
-      .map(([id, product]) => ({ id, ...product }))
+  (products, rules) =>
+    products.filter((product) => applyFilters(rules, product))
 );
 
 export const getFilteredProductsCompanies = createSelector(
