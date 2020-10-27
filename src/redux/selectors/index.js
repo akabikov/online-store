@@ -10,7 +10,7 @@ export const getCompanies = createSelector(getProductsArray, (products) =>
   Array.from(new Set(products.map(({ company }) => company))).sort()
 );
 
-const getFilters = (state) => state.filters;
+export const getFilters = (state) => state.filters;
 
 export const getProductsByFilters = createSelector(
   getProductsArray,
