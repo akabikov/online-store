@@ -19,11 +19,6 @@ export const getProductsByFilters = createSelector(
     products.filter((product) => applyFilters(rules, product))
 );
 
-export const getFilteredProductsCompanies = createSelector(
-  getProductsByFilters,
-  (filteredProducts) => new Set(filteredProducts.map(({ company }) => company))
-);
-
 export const getFilteredProductsPriceRange = createSelector(
   getProductsByFilters,
   (filteredProducts) =>
