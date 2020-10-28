@@ -1,6 +1,8 @@
 import React from "react";
 import "./style.scss";
 
+const FILTER_NAME = "search";
+
 function SearchFilter({ search, setFilter }) {
   return (
     <div>
@@ -11,7 +13,7 @@ function SearchFilter({ search, setFilter }) {
         id='search'
         value={search?.query || ""}
         onChange={({ target: { value } }) =>
-          setFilter("search", { query: value })
+          setFilter(FILTER_NAME, { query: value })
         }
       />
     </div>

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { getFilteredProductsPriceRange } from "../../../redux/selectors";
 import "./style.scss";
 
+const FILTER_NAME = "price";
+
 function PriceFilter({ availableRange, price, setFilter }) {
   return (
     <fieldset>
@@ -15,7 +17,7 @@ function PriceFilter({ availableRange, price, setFilter }) {
         placeholder={availableRange?.min || ""}
         value={price?.min || ""}
         onChange={({ target: { value } }) =>
-          setFilter("price", { ...price, min: value })
+          setFilter(FILTER_NAME, { ...price, min: value })
         }
       />
       <label htmlFor='price-max'>to</label>
@@ -26,13 +28,13 @@ function PriceFilter({ availableRange, price, setFilter }) {
         placeholder={availableRange?.max || ""}
         value={price?.max || ""}
         onChange={({ target: { value } }) =>
-          setFilter("price", { ...price, max: value })
+          setFilter(FILTER_NAME, { ...price, max: value })
         }
       />
       <input
         type='button'
         value='Reset'
-        onClick={() => setFilter("price", {})}
+        onClick={() => setFilter(FILTER_NAME, {})}
       />
     </fieldset>
   );

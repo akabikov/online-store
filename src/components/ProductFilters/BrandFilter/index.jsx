@@ -5,14 +5,16 @@ import objectFromArray from "../../../helpers/objectFromArray";
 import BrandItem from "./BrandItem";
 import "./style.scss";
 
+const FILTER_NAME = "company";
+
 function BrandFilter({ companies, company: selectedBrands = {}, setFilter }) {
   const toggleCheck = (company) =>
-    setFilter("company", addOrDelEntry(selectedBrands, company, true));
+    setFilter(FILTER_NAME, addOrDelEntry(selectedBrands, company, true));
 
   const selectAll = () =>
-    setFilter("company", objectFromArray(companies, true));
+    setFilter(FILTER_NAME, objectFromArray(companies, true));
 
-  const unselectAll = () => setFilter("company", {});
+  const unselectAll = () => setFilter(FILTER_NAME, {});
 
   const companiesList = companies.map((company) => (
     <BrandItem
