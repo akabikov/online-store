@@ -6,13 +6,8 @@ import BrandItem from "./BrandItem";
 import "./style.scss";
 
 function BrandFilter({ companies, company: selectedBrands = {}, setFilter }) {
-  const toggleCheck = (company) => {
-    const { [company]: deleted, ...rest } = selectedBrands;
-    setFilter(
-      "company",
-      deleted ? rest : { ...selectedBrands, [company]: true }
-    );
-  };
+  const toggleCheck = (company) =>
+    setFilter("company", addOrDelEntry(selectedBrands, company, true));
 
   const selectAll = () =>
     setFilter("company", objectFromArray(companies, true));
@@ -36,6 +31,11 @@ function BrandFilter({ companies, company: selectedBrands = {}, setFilter }) {
       {companiesList}
     </fieldset>
   );
+}
+
+function addOrDelEntry(obj, key, defaultValue) {
+  const { [key]: deleted, ...rest } = obj;
+  return deleted ? rest : { ...obj, [key]: defaultValue };
 }
 
 const mapStateToProps = (state) => ({
