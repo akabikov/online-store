@@ -6,31 +6,28 @@ import "./style.scss";
 const FILTER_NAME = "price";
 
 function PriceFilter({ availableRange, price, setFilter }) {
+  const fields = [
+    ["from", "min"],
+    ["to", "max"],
+  ].map(([label, minMax]) => (
+    <label key={minMax}>
+      {label}
+      <input
+        type='number'
+        id={`price-${minMax}`}
+        min='0'
+        placeholder={availableRange?.[minMax] || ""}
+        value={price?.[minMax] || ""}
+        onChange={({ target: { value } }) =>
+          setFilter(FILTER_NAME, { ...price, [minMax]: value })
+        }
+      />
+    </label>
+  ));
+
   return (
     <fieldset>
-      <legend>Price</legend>
-      <label htmlFor='price-min'>from</label>
-      <input
-        type='number'
-        id='price-min'
-        min='0'
-        placeholder={availableRange?.min || ""}
-        value={price?.min || ""}
-        onChange={({ target: { value } }) =>
-          setFilter(FILTER_NAME, { ...price, min: value })
-        }
-      />
-      <label htmlFor='price-max'>to</label>
-      <input
-        type='number'
-        id='price-max'
-        min='0'
-        placeholder={availableRange?.max || ""}
-        value={price?.max || ""}
-        onChange={({ target: { value } }) =>
-          setFilter(FILTER_NAME, { ...price, max: value })
-        }
-      />
+      {fields}
       <input
         type='button'
         value='Reset'
