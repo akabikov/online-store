@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./style.scss";
 
-function SearchFilter({ updateFilters }) {
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    updateFilters({ search: query });
-  }, [query, updateFilters]);
-
+function SearchFilter({ search, setFilter }) {
   return (
     <div>
       <label htmlFor='search'>Search</label>
@@ -15,8 +9,10 @@ function SearchFilter({ updateFilters }) {
         type='search'
         name='search'
         id='search'
-        value={query}
-        onChange={({ target: { value } }) => setQuery(value)}
+        value={search?.query || ""}
+        onChange={({ target: { value } }) =>
+          setFilter("search", { query: value })
+        }
       />
     </div>
   );

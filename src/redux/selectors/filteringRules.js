@@ -3,7 +3,7 @@ const rules = {
     !Object.keys(companyList).length || companyList[company],
   price: ({ min = 0, max }, { price }) =>
     +price >= +min && +price <= (+max || Infinity),
-  search: (query, { title }) => !query || title.includes(query),
+  search: ({ query }, { title }) => !query || title.includes(query),
 };
 
 export const applyFilters = (filters, product) =>

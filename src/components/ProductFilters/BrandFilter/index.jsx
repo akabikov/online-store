@@ -1,42 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import {
-  getCompanies,
-  getFilteredProductsCompanies,
-} from "../../../redux/selectors";
+import { getCompanies } from "../../../redux/selectors";
 import BrandItem from "./BrandItem";
 import "./style.scss";
 
-function BrandFilter({ companies, filteredCompanies, updateFilters }) {
-  const [selectedBrands, setSelectedBrands] = useState({});
-  console.log("BrandFilter component rendered");
-
-  useEffect(() => {
-    updateFilters({ company: selectedBrands });
-  }, [selectedBrands, updateFilters]);
-
-  const toggleCheck = (company) =>
-    setSelectedBrands((selectedBrands) => {
-      const { [company]: deleted, ...rest } = selectedBrands;
-      return deleted ? rest : { ...selectedBrands, [company]: true };
-    });
+function BrandFilter({ companies, company: selectedBrands = {}, setFilter }) {
+  const toggleCheck = (company) => {
+    const { [company]: deleted, ...rest } = selectedBrands;
+    setFilter(
+      "company",
+      deleted ? rest : { ...selectedBrands, [company]: true }
+    );
+  };
 
   const selectAll = () =>
-    setSelectedBrands(
+    setFilter(
+      "company",
       companies.reduce((obj, company) => {
         obj[company] = true;
         return obj;
       }, {})
     );
 
-  const unselectAll = () => setSelectedBrands({});
+  const unselectAll = () => setFilter("company", {});
 
   const companiesList = companies.map((company) => (
     <BrandItem
       key={company}
       label={company}
       isChecked={selectedBrands[company]}
-      // isDisabled={!filteredCompanies.has(company)}
       toggle={toggleCheck}
     />
   ));
@@ -53,7 +45,6 @@ function BrandFilter({ companies, filteredCompanies, updateFilters }) {
 
 const mapStateToProps = (state) => ({
   companies: getCompanies(state),
-  // filteredCompanies: getFilteredProductsCompanies(state),
 });
 
 export default connect(mapStateToProps)(BrandFilter);
