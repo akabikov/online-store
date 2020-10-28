@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateFilters } from "../../redux/actions";
 import { getFilters } from "../../redux/selectors";
 import debounce from "../../helpers/debounce";
+import objectFromArray from "../../helpers/objectFromArray";
 import SearchFilter from "./SearchFilter";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
@@ -25,10 +26,7 @@ function ProductFilters({ storeFilters, updateFilters }) {
   const setFilter = (filterName, filterValue) =>
     setFilters((filters) => ({ ...filters, [filterName]: filterValue }));
 
-  const resetAll = () =>
-    setFilters(
-      Object.keys(filters).reduce((acc, el) => ({ ...acc, [el]: {} }), {})
-    );
+  const resetAll = () => setFilters(objectFromArray(Object.keys(filters), {}));
 
   return (
     <form>

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getCompanies } from "../../../redux/selectors";
+import objectFromArray from "../../../helpers/objectFromArray";
 import BrandItem from "./BrandItem";
 import "./style.scss";
 
@@ -14,13 +15,7 @@ function BrandFilter({ companies, company: selectedBrands = {}, setFilter }) {
   };
 
   const selectAll = () =>
-    setFilter(
-      "company",
-      companies.reduce((obj, company) => {
-        obj[company] = true;
-        return obj;
-      }, {})
-    );
+    setFilter("company", objectFromArray(companies, true));
 
   const unselectAll = () => setFilter("company", {});
 
