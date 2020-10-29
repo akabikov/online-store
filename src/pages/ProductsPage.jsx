@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ProductCard from "../components/ProductCard";
 import ProductFilters from "../components/ProductFilters";
+import ProductsSorting from "../components/ProductsSorting";
 import { loadProducts, add } from "../redux/actions";
-import { getProductsByFilters } from "../redux/selectors";
+import { getSortedProducts } from "../redux/selectors";
 import "./ProductPage.scss";
 
 function ProductsPage({ loadProducts, products, add }) {
@@ -21,11 +22,12 @@ function ProductsPage({ loadProducts, products, add }) {
   return (
     <div>
       <ProductFilters />
+      <ProductsSorting />
       <ul className='product-list'>{productList}</ul>
     </div>
   );
 }
 
-const mapStateToProps = (state) => ({ products: getProductsByFilters(state) });
+const mapStateToProps = (state) => ({ products: getSortedProducts(state) });
 
 export default connect(mapStateToProps, { loadProducts, add })(ProductsPage);
