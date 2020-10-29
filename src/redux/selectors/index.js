@@ -40,5 +40,5 @@ export const getSortedProducts = createSelector(
   getProductsByFilters,
   getSorting,
   (products, sorting) =>
-    products.sort((current, next) => applySorting(current, next, sorting))
+    [...products].sort((current, next) => applySorting(current, next, sorting))
 );
