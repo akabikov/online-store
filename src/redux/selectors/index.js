@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 import { applyFilters } from "./filteringRules";
+import { applySorting } from "./sortingRules";
 
 const getProducts = (state) => state.products;
 const getProductsArray = createSelector(getProducts, (products) =>
@@ -31,4 +32,13 @@ export const getFilteredProductsPriceRange = createSelector(
           { min: Infinity, max: 0 }
         )
       : { min: 0, max: 0 }
+);
+
+export const getSorting = (state) => state.sorting;
+
+export const getSortedProducts = createSelector(
+  getProductsByFilters,
+  getSorting,
+  (products, sorting) =>
+    products.sort((current, next) => applySorting(current, next, sorting))
 );

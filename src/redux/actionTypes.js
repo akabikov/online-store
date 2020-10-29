@@ -4,3 +4,4 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
 export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
 export const UPDATE_FILTERS = "UPDATE_FILTERS";
+export const UPDATE_SORTING = "UPDATE_SORTING";

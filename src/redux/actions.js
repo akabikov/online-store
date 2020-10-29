@@ -5,6 +5,7 @@ import {
   CLEAR_CART,
   LOAD_PRODUCTS,
   UPDATE_FILTERS,
+  UPDATE_SORTING,
 } from "./actionTypes";
 
 import loadData from "../helpers/loadData";
@@ -40,4 +41,9 @@ export const loadProducts = () => async (dispatch) => {
 export const updateFilters = (filter) => ({
   type: UPDATE_FILTERS,
   payload: filter,
+});
+
+export const updateSorting = (sorting) => ({
+  type: UPDATE_SORTING,
+  payload: sorting,
 });
