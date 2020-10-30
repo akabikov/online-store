@@ -1,33 +1,26 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import ProductCard from "../components/ProductCard";
+import ProductList from "../components/ProductList";
 import ProductFilters from "../components/ProductFilters";
 import ProductsSorting from "../components/ProductsSorting";
-import { loadProducts, add } from "../redux/actions";
+import { loadProducts } from "../redux/actions";
 import { getSortedProducts } from "../redux/selectors";
-import "./ProductPage.scss";
 
-function ProductsPage({ loadProducts, products, add }) {
+function ProductsPage({ loadProducts, products }) {
   useEffect(() => {
     const fetchProducts = async () => await loadProducts();
     fetchProducts();
   }, [loadProducts]);
 
-  const productList =
-    products &&
-    products.map(({ id, ...product }) => (
-      <ProductCard key={id} id={id} {...product} add={add} />
-    ));
-
   return (
     <div>
       <ProductFilters />
       <ProductsSorting />
-      <ul className='product-list'>{productList}</ul>
+      <ProductList products={products} />
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({ products: getSortedProducts(state) });
 
-export default connect(mapStateToProps, { loadProducts, add })(ProductsPage);
+export default connect(mapStateToProps, { loadProducts })(ProductsPage);

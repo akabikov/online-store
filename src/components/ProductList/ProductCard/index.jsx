@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductCard.scss";
+import "./style.scss";
 
 function ProductCard({ id, title, imageUrl, price, add }) {
   const handleAdd = (evt) => {
