@@ -5,11 +5,11 @@ import ProductCard from "./ProductCard";
 import "./style.scss";
 
 function ProductList({ products }) {
-  const productList =
-    products &&
-    products.map(({ id, ...product }) => (
-      <ProductCard key={id} id={id} {...product} add={add} />
-    ));
+  const productList = products?.length
+    ? products.map(({ id, ...product }) => (
+        <ProductCard key={id} id={id} {...product} add={add} />
+      ))
+    : null;
 
   return <ul className='product-list'>{productList}</ul>;
 }
