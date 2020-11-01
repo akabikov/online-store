@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import ProductList from "../components/ProductList";
+import PaginationWrapper from "../components/ProductList/PaginationWrapper";
 import ProductFilters from "../components/ProductFilters";
 import ProductsSorting from "../components/ProductsSorting";
 import { loadProducts } from "../redux/actions";
-import { getSortedProducts } from "../redux/selectors";
 
-function ProductsPage({ loadProducts, products }) {
+function ProductsPage({ loadProducts }) {
   useEffect(() => {
     const fetchProducts = async () => await loadProducts();
     fetchProducts();
@@ -16,11 +15,9 @@ function ProductsPage({ loadProducts, products }) {
     <div>
       <ProductFilters />
       <ProductsSorting />
-      <ProductList products={products} />
+      <PaginationWrapper />
     </div>
   );
 }
 
-const mapStateToProps = (state) => ({ products: getSortedProducts(state) });
-
-export default connect(mapStateToProps, { loadProducts })(ProductsPage);
+export default connect(null, { loadProducts })(ProductsPage);
