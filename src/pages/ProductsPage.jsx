@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import ProductFilters from "../components/ProductFilters";
 import ProductsSorting from "../components/ProductsSorting";
 import ProductList from "../components/ProductList";
 import withPagination from "../components/Pagination";
 import { getPaginatedProducts } from "../redux/selectors";
-import { loadProducts } from "../redux/actions";
 
 const ProductListWithPagination = withPagination(
   ProductList,
   getPaginatedProducts
 );
 
-function ProductsPage({ loadProducts }) {
-  useEffect(() => {
-    const fetchProducts = async () => await loadProducts();
-    fetchProducts();
-  }, [loadProducts]);
-
+function ProductsPage() {
   return (
     <div>
       <ProductFilters />
@@ -27,4 +20,4 @@ function ProductsPage({ loadProducts }) {
   );
 }
 
-export default connect(null, { loadProducts })(ProductsPage);
+export default ProductsPage;
