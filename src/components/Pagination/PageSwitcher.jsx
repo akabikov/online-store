@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import useQuery from "../../hooks/useQuery";
 
@@ -8,7 +8,9 @@ function PageSwitcher({ numOfPages, currentPage, switchPage }) {
   const urlPage = Number(useQuery().get("page"));
   let history = useHistory();
 
-  if (urlPage !== currentPage) history.push(getPageUrl(currentPage));
+  useEffect(() => {
+    if (urlPage !== currentPage) history.push(getPageUrl(currentPage));
+  }, [urlPage, currentPage]);
 
   const pageSwitcher =
     numOfPages === 1 ||
