@@ -12,23 +12,36 @@ function PageSwitcher({ numOfPages, currentPage, switchPage }) {
     if (urlPage !== currentPage) history.push(getPageUrl(currentPage));
   }, [urlPage, currentPage]);
 
-  const pageSwitcher =
+  const pageLink = (page, title) => (
+    <NavLink
+      to={getPageUrl(page)}
+      isActive={() => urlPage === page}
+      activeStyle={{ textDecoration: "none" }}
+      onClick={() => switchPage(page)}
+    >
+      {title || page}
+    </NavLink>
+  );
+
+  const pages =
     numOfPages === 1 ||
     Array.from(Array(numOfPages), (_, i) => ++i).map((i) => (
       <React.Fragment key={i}>
-        <NavLink
-          to={getPageUrl(i)}
-          isActive={() => urlPage === i}
-          activeStyle={{ textDecoration: "none" }}
-          onClick={() => switchPage(i)}
-        >
-          {i}
-        </NavLink>
+        {pageLink(i)}
         {i === numOfPages || ", "}
       </React.Fragment>
     ));
 
-  return <div>{pageSwitcher}</div>;
+  const first = currentPage > 1 && pageLink(1, "<<");
+  const prev = currentPage > 1 && pageLink(currentPage - 1, "<");
+  const next = currentPage < numOfPages && pageLink(currentPage + 1, ">");
+  const last = currentPage < numOfPages && pageLink(numOfPages, ">>");
+
+  return (
+    <div>
+      {first} {prev} {pages} {next} {last}
+    </div>
+  );
 }
 
 export default PageSwitcher;
