@@ -1,16 +1,32 @@
 import React from "react";
+import { NavLink, useHistory } from "react-router-dom";
+import useQuery from "../../hooks/useQuery";
+
+const getPageUrl = (n) => ({ search: `?page=${n}` });
 
 function PageSwitcher({ numOfPages, currentPage, switchPage }) {
+  const urlPage = Number(useQuery().get("page"));
+  let history = useHistory();
+
+  if (urlPage !== currentPage) history.push(getPageUrl(currentPage));
+
   const pageSwitcher =
     numOfPages === 1 ||
-    [...Array(numOfPages)].map((_, i, arr) => (
+    Array.from(Array(numOfPages), (_, i) => ++i).map((i) => (
       <React.Fragment key={i}>
-        <button onClick={() => switchPage(i + 1)}>{i + 1}</button>
-        {i === arr.length - 1 || ", "}
+        <NavLink
+          to={getPageUrl(i)}
+          isActive={() => urlPage === i}
+          activeStyle={{ textDecoration: "none" }}
+          onClick={() => switchPage(i)}
+        >
+          {i}
+        </NavLink>
+        {i === numOfPages || ", "}
       </React.Fragment>
     ));
 
-  return <>{pageSwitcher}</>;
+  return <div>{pageSwitcher}</div>;
 }
 
 export default PageSwitcher;
