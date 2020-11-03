@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { useSelector } from "react-redux";
 import PageSwitcher from "./PageSwitcher";
 import ItemsPerPageSelector from "./ItemsPerPageSelector";
 
-const config = {
-  itemsPerPage: [3, 4, 5, 10, 20, 0],
-  defaultItemsPerPage: 5,
-  startPage: 1,
+const initState = {
+  itemsPerPage: 5,
+  page: 1,
 };
 
+const reducer = (state, action) =>
+  ({
+    itemsPerPage: { itemsPerPage: action.payload, page: 1 },
+    page: { ...state, page: action.payload },
+  }?.[action.type]);
+
 const withPagination = (ListComponent, selector) => (props) => {
-  const [itemsPerPage, setItemsPerPage] = useState(config.defaultItemsPerPage);
-  const [page, setPage] = useState(config.startPage);
+  const [{ itemsPerPage, page }, dispatch] = useReducer(reducer, initState);
 
   const { products, numOfPages } = useSelector((state) =>
     selector(state, { itemsPerPage, pageNum: page })
@@ -20,15 +24,14 @@ const withPagination = (ListComponent, selector) => (props) => {
   return (
     <>
       <ItemsPerPageSelector
-        listOfItemsPerPage={config.itemsPerPage}
         itemsPerPage={itemsPerPage}
-        setItemsPerPage={setItemsPerPage}
+        setItemsPerPage={(n) => dispatch({ type: "itemsPerPage", payload: n })}
       />
       <ListComponent products={products} {...props} />
       <PageSwitcher
         numOfPages={numOfPages}
         currentPage={page}
-        switchPage={setPage}
+        switchPage={(page) => dispatch({ type: "page", payload: page })}
       />
     </>
   );
