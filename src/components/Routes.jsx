@@ -13,10 +13,8 @@ export default function Routes(props) {
     <Switch>
       <Route
         exact
-        path={"/products/:src"}
-        render={({ match }) => (
-          <SingleProductPage {...{ src: match.params.src }} />
-        )}
+        path={"/products/:id"}
+        render={() => <SingleProductPage />}
       />
       <Route exact path={"/products"} render={() => <ProductsPage />} />
       <Route exact path={"/cart"} render={() => <CartPage />} />
