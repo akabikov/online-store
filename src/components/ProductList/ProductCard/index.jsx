@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { add } from "../../../redux/actions";
 import "./style.scss";
 
-function ProductCard({ id, title, imageUrl, price, add }) {
-  const handleAdd = (evt) => {
-    evt.preventDefault();
-    add(id);
-  };
+function ProductCard({ id, title, imageUrl, price }) {
+  const dispatch = useDispatch();
+  const handleAdd = () => dispatch(add(id));
 
   const history = useHistory();
   const handleView = () => history.push(`products/${id}`);
