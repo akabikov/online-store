@@ -16,7 +16,7 @@ function CartItem({ id, num, title, price, imageUrl, edit, remove }) {
 
   return (
     <li>
-      <img src={`./${imageUrl}`} alt={title} />
+      <img src={`/${imageUrl}`} alt={title} />
       <p>{title}</p>
       <p>{price}</p>
       <form>
