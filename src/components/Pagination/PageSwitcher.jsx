@@ -1,36 +1,28 @@
-import React, { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import useQuery from "../../hooks/useQuery";
-
-const getPageUrl = (n) => ({ search: `?page=${n}` });
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 function PageSwitcher({ numOfPages, currentPage, switchPage }) {
-  const urlPage = Number(useQuery().get("page"));
-  let history = useHistory();
-
-  useEffect(() => {
-    if (urlPage !== currentPage) history.push(getPageUrl(currentPage));
-  }, [urlPage, currentPage]);
-
   const pageLink = (page, title) => (
     <NavLink
-      to={getPageUrl(page)}
-      isActive={() => urlPage === page}
+      to={switchPage(page)}
+      isActive={() => currentPage === page}
       activeStyle={{ textDecoration: "none" }}
-      onClick={() => switchPage(page)}
     >
       {title || page}
     </NavLink>
   );
 
   const pages =
-    numOfPages === 1 ||
-    Array.from(Array(numOfPages), (_, i) => ++i).map((i) => (
-      <React.Fragment key={i}>
-        {pageLink(i)}
-        {i === numOfPages || ", "}
-      </React.Fragment>
-    ));
+    numOfPages > 1 &&
+    [...Array(numOfPages)].map((_, idx) => {
+      const i = idx + 1;
+      return (
+        <React.Fragment key={i}>
+          {pageLink(i)}
+          {i === numOfPages || ", "}
+        </React.Fragment>
+      );
+    });
 
   const first = currentPage > 1 && pageLink(1, "<<");
   const prev = currentPage > 1 && pageLink(currentPage - 1, "<");
