@@ -10,12 +10,14 @@ const DEFAULT_ITEMS = 5;
 const withPagination = (ListComponent, selector) => (props) => {
   const query = useQuery();
 
-  const page = Number(query.get("page")) || DEFAULT_PAGE;
-  const itemsPerPage = Number(query.get("items")) ?? DEFAULT_ITEMS;
+  let page = Number(query.get("page")) || DEFAULT_PAGE;
+  const itemsPerPage = Number(query.get("items") ?? DEFAULT_ITEMS);
 
   const { products, numOfPages } = useSelector((state) =>
     selector(state, { itemsPerPage, pageNum: page })
   );
+
+  page = page > numOfPages ? numOfPages : page;
 
   return (
     <>
