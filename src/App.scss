@@ -1,3 +1,15 @@
+:root {
+  --header-height: 2.5rem;
+  --primaryColor: #5fb7ea;
+  --primaryRGBA: rgba(0, 0, 0, 0.3);
+  --mainGrey: #fafafa;
+  --darkGrey: #5f5e5e;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainTransition: all 0.3s ease-in-out;
+  --mainSpacing: 0.3rem;
+}
+
 .container {
   min-height: calc(100vh - var(--header-height));
   display: flex;
