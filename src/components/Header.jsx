@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 
 export default function Header({ openCloseMenu, openCloseCart }) {
@@ -15,10 +16,9 @@ export default function Header({ openCloseMenu, openCloseCart }) {
           <rect y='60' width='100' height='15' rx='8'></rect>
         </svg>
       </button>
-      <div>
-        <span>Tech </span>
-        <span>Store</span>
-      </div>
+      <Link to='/'>
+        <img src='/media/static/logo.svg' alt='store logo' />
+      </Link>
       <button onClick={openCloseCart}>
         <svg width='1.5rem' height='1.5rem' viewBox='0 0 24 24'>
           <path
