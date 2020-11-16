@@ -1,3 +1,25 @@
 .Footer {
-  border: 2px solid red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--darkGrey);
+  color: var(--mainWhite);
+  padding: 0.5rem;
+
+  .social-media {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+
+    a svg {
+      color: var(--mainWhite);
+      font-size: 1.5rem;
+      transition: var(--mainTransition);
+
+      &:hover {
+        color: var(--primaryColor);
+      }
+    }
+  }
 }
