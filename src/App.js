@@ -21,12 +21,10 @@ function App({ loadProducts }) {
   return (
     <>
       <Header openCloseMenu={openCloseMenu} openCloseCart={openCloseCart} />
-      <div className='container'>
-        <Content />
-        <Menu isOpen={isMenuOpen} />
-        <Cart isOpen={isCartOpen} />
-        <Footer />
-      </div>
+      <Content />
+      <Menu isOpen={isMenuOpen} />
+      <Cart isOpen={isCartOpen} />
+      <Footer />
     </>
   );
 }
