@@ -1,14 +1,43 @@
 .Menu {
-  position: absolute;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
   height: 100%;
-  width: 20rem;
-  border: 1px solid red;
-  background-color: white;
+  width: 100%;
+  border-right: 4px solid var(--primaryColor);
+  background-color: var(--mainGrey);
+  z-index: 1;
+  transition: var(--mainTransition);
+  transform: translateX(0);
+
+  @media (min-width: 576px) {
+    width: 20rem;
+  }
+
   ul {
     list-style: none;
-  }
-}
 
-.hidden {
-  display: none;
+    li {
+      a {
+        display: block;
+        text-decoration: none;
+        color: var(--mainBlack);
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        text-align: start;
+        padding: 0.5rem 1.5rem;
+        background: transparent;
+        transition: var(--mainTransition);
+
+        &:hover {
+          background: var(--primaryColor);
+          color: var(--mainWhite);
+          padding: 0.5rem 1.5rem 0.5rem 2.5rem;
+        }
+      }
+    }
+  }
+  &.hidden {
+    transform: translateX(-100%);
+  }
 }
