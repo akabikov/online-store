@@ -1,12 +1,25 @@
 .Cart {
-  position: absolute;
-  height: 100%;
-  width: 20rem;
+  position: fixed;
+  top: var(--header-height);
   right: 0;
-  border: 1px solid red;
-  background-color: lightblue;
-  // display: none;
+  height: 100%;
+  width: 100%;
+  border-left: 4px solid var(--primaryColor);
+  background-color: var(--mainGrey);
+  z-index: 1;
+  transition: var(--mainTransition);
+  transform: translateX(0);
+  overflow: auto;
+
+  @media (min-width: 576px) {
+    width: 20rem;
+  }
+
   ul {
-    list-style-type: none;
+    list-style: none;
+  }
+
+  &.hidden {
+    transform: translateX(100%);
   }
 }
