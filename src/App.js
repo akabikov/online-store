@@ -22,8 +22,8 @@ function App({ loadProducts }) {
     <>
       <Header openCloseMenu={openCloseMenu} openCloseCart={openCloseCart} />
       <Content />
-      <Menu isOpen={isMenuOpen} />
-      <Cart isOpen={isCartOpen} />
+      <Menu isOpen={isMenuOpen} closeMe={openCloseMenu} />
+      <Cart isOpen={isCartOpen} closeMe={openCloseCart} />
       <Footer />
     </>
   );

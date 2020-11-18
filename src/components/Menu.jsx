@@ -10,10 +10,10 @@ const links = [
   { path: "/about", title: "About" },
 ];
 
-export default function Menu({ isOpen }) {
+export default function Menu({ isOpen, closeMe }) {
   const linkItems = links.map(({ path, title }) => (
     <li key={path}>
-      <NavLink exact to={path}>
+      <NavLink exact to={path} onClick={closeMe}>
         {title}
       </NavLink>
     </li>
