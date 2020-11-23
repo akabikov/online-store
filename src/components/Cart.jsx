@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { edit, remove, clear } from "../redux/actions";
 import CartItem from "./CartItem";
 import "./Cart.scss";
@@ -23,18 +24,37 @@ function Cart({ isOpen, closeMe, cart, products, edit, remove, clear }) {
 
   return (
     <div className={"Cart" + (isOpen ? "" : " hidden")}>
-      <ul>{cartItems}</ul>
-      <p>{`Cart total: ${cartSum}`}</p>
-      <p>
-        <button
-          onClick={() => {
-            clear();
-            closeMe();
-          }}
-        >
-          Clear cart
-        </button>
-      </p>
+      {cartItems.length ? (
+        <>
+          <ul>{cartItems}</ul>
+          <div className='cart__total'>
+            <span> {"Cart total: "}</span>
+            <span className='cart__total-sum'>{cartSum}</span>
+          </div>
+          <button
+            className='cart__button'
+            onClick={() => {
+              clear();
+              closeMe();
+            }}
+          >
+            Clear cart
+          </button>
+        </>
+      ) : (
+        <>
+          <div>Cart is empty</div>
+          <Link
+            to='/products'
+            className='cart__button'
+            onClick={() => {
+              closeMe();
+            }}
+          >
+            View products
+          </Link>
+        </>
+      )}
     </div>
   );
 }

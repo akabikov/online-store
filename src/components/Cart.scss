@@ -19,6 +19,25 @@
     list-style: none;
   }
 
+  .cart__total {
+    margin: 0.5rem auto;
+
+    .cart__total-sum:before {
+      content: "$";
+    }
+  }
+
+  .cart__button {
+    display: inline-block;
+    background-color: var(--primaryColor);
+    color: var(--mainWhite);
+    text-decoration: none;
+    border: 1px solid var(--primaryColor);
+    border-radius: 4px;
+    padding: 0.2rem;
+    margin: 0.5rem;
+  }
+
   &.hidden {
     transform: translateX(100%);
   }
