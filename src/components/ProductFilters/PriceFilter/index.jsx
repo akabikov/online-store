@@ -7,34 +7,31 @@ const FILTER_NAME = "price";
 
 function PriceFilter({ availableRange, price, setFilter }) {
   const fields = [
-    ["from", "min"],
-    ["to", "max"],
-  ].map(([label, minMax]) => (
-    <label key={minMax}>
-      {label}
+    ["min", " - "],
+    ["max", ""],
+  ].map(([minMax, delimiter]) => (
+    <React.Fragment key={minMax}>
       <input
-        type='number'
+        type='search'
+        inputMode='numeric'
+        aria-label={minMax}
         id={`price-${minMax}`}
-        min='0'
         placeholder={availableRange?.[minMax] || ""}
         value={price?.[minMax] || ""}
-        onChange={({ target: { value } }) =>
-          setFilter(FILTER_NAME, { ...price, [minMax]: value })
-        }
+        onChange={({ target: { value } }) => {
+          if (!Number.isNaN(Number(value))) {
+            setFilter(FILTER_NAME, {
+              ...price,
+              [minMax]: Number(value),
+            });
+          }
+        }}
       />
-    </label>
+      {delimiter}
+    </React.Fragment>
   ));
 
-  return (
-    <fieldset>
-      {fields}
-      <input
-        type='button'
-        value='Reset'
-        onClick={() => setFilter(FILTER_NAME, {})}
-      />
-    </fieldset>
-  );
+  return <fieldset>{fields}</fieldset>;
 }
 
 const mapStateToProps = (state) => ({
