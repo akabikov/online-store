@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { updateSorting } from "../../redux/actions";
 import { DEFAULT_SORT } from "../../redux/reducers/sorting";
+import "./style.scss";
 
 function ProductsSorting({ updateSorting }) {
   const [sorting, setSorting] = useState(DEFAULT_SORT);
@@ -19,7 +20,7 @@ function ProductsSorting({ updateSorting }) {
   const { orderBy, direction } = sorting;
 
   return (
-    <form>
+    <form className='ProductsSorting'>
       <label htmlFor='order-by'>Order by: </label>
       <select
         id='order-by'
@@ -30,16 +31,17 @@ function ProductsSorting({ updateSorting }) {
         <option value='price'>price</option>
         <option value='company'>company</option>
       </select>
-      <select
-        id='direction'
-        value={direction}
+      <button
+        type='button'
         disabled={isDefault(orderBy)}
-        onChange={({ target }) => handleChange({ direction: target.value })}
+        onClick={() =>
+          handleChange({
+            direction: direction === "ascending" ? "descending" : "ascending",
+          })
+        }
       >
-        <option value='default' disabled></option>
-        <option value='ascending'>ascending</option>
-        <option value='descending'>descending</option>
-      </select>
+        <i className='zmdi zmdi-swap-vertical'></i>
+      </button>
     </form>
   );
 }
