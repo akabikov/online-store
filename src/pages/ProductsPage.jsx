@@ -2,20 +2,36 @@ import React from "react";
 import ProductFilters from "../components/ProductFilters";
 import ProductsSorting from "../components/ProductsSorting";
 import ProductList from "../components/ProductList";
-import withPagination from "../components/Pagination";
+import ItemsPerPageSelector from "../components/Pagination/ItemsPerPageSelector";
+import PageSwitcher from "../components/Pagination/PageSwitcher";
 import { getPaginatedProducts } from "../redux/selectors";
-
-const ProductListWithPagination = withPagination(
-  ProductList,
-  getPaginatedProducts
-);
+import usePagination from "../hooks/usePagination";
 
 function ProductsPage() {
+  const {
+    itemsPerPage,
+    setItemsPerPage,
+    numOfPages,
+    page,
+    switchPage,
+    products,
+  } = usePagination(getPaginatedProducts);
+
   return (
     <div>
       <ProductFilters />
       <ProductsSorting />
-      <ProductListWithPagination />
+      <ItemsPerPageSelector
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={setItemsPerPage}
+        listOfOptions={[3, 5, 10, 20, 0]}
+      />
+      <ProductList products={products} />
+      <PageSwitcher
+        numOfPages={numOfPages}
+        currentPage={page}
+        switchPage={switchPage}
+      />
     </div>
   );
 }

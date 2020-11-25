@@ -1,9 +1,11 @@
 import React from "react";
 
-const listOfItemsPerPage = [3, 4, 5, 10, 20, 0];
-
-function ItemsPerPageSelector({ itemsPerPage, setItemsPerPage }) {
-  const itemsPerPageOptions = listOfItemsPerPage.map((el) => (
+function ItemsPerPageSelector({
+  itemsPerPage,
+  setItemsPerPage,
+  listOfOptions = [5, 10, 0],
+}) {
+  const itemsPerPageOptions = listOfOptions.map((el) => (
     <option key={el} value={el}>
       {el || "all"}
     </option>
