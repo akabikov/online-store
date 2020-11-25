@@ -5,7 +5,8 @@ const FILTER_NAME = "search";
 
 function SearchFilter({ search, setFilter }) {
   return (
-    <div>
+    <fieldset className='SearchFilter'>
+      <legend>Search</legend>
       <input
         type='search'
         name='search'
@@ -17,7 +18,7 @@ function SearchFilter({ search, setFilter }) {
           setFilter(FILTER_NAME, { query: value })
         }
       />
-    </div>
+    </fieldset>
   );
 }
 

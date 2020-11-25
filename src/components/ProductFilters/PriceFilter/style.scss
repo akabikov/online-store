@@ -1,0 +1,17 @@
+.PriceFilter {
+  display: flex;
+  border: none;
+
+  div {
+    flex: 1;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .price-range-delimiter {
+    margin: 0 0.2rem;
+    flex: 0;
+  }
+}

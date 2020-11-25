@@ -29,13 +29,14 @@ function ProductFilters({ storeFilters, updateFilters }) {
   const resetAll = () => setFilters(objectFromArray(Object.keys(filters), {}));
 
   return (
-    <form>
-      Filters
-      <SearchFilter {...filters} setFilter={setFilter} />
-      <PriceFilter {...filters} setFilter={setFilter} />
-      <BrandFilter {...filters} setFilter={setFilter} />
+    <form className='ProductFilters'>
+      <div className='product-filters'>
+        <SearchFilter {...filters} setFilter={setFilter} />
+        <PriceFilter {...filters} setFilter={setFilter} />
+        <BrandFilter {...filters} setFilter={setFilter} />
+      </div>
       <button type='reset' onClick={resetAll}>
-        Reset all filters
+        Reset all
       </button>
     </form>
   );

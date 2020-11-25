@@ -17,20 +17,27 @@ function BrandFilter({ companies, company: selectedBrands = {}, setFilter }) {
   const unselectAll = () => setFilter(FILTER_NAME, {});
 
   const companiesList = companies.map((company) => (
-    <BrandItem
-      key={company}
-      label={company}
-      isChecked={selectedBrands[company]}
-      toggle={toggleCheck}
-    />
+    <li key={company}>
+      <BrandItem
+        label={company}
+        isChecked={selectedBrands[company]}
+        toggle={toggleCheck}
+      />
+    </li>
   ));
 
   return (
-    <fieldset>
+    <fieldset className='BrandFilter'>
       <legend>Brands</legend>
-      <BrandItem label='select all' toggle={selectAll} />
-      <BrandItem label='unselect all' toggle={unselectAll} />
-      {companiesList}
+      <ul>{companiesList}</ul>
+      <div>
+        <button type='button' title='select all' onClick={selectAll}>
+          <i className='zmdi zmdi-check-all'></i>
+        </button>
+        <button type='button' title='deselect all' onClick={unselectAll}>
+          <i className='zmdi zmdi-square-o'></i>
+        </button>
+      </div>
     </fieldset>
   );
 }
