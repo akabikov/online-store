@@ -24,6 +24,7 @@ function ProductsSorting({ updateSorting }) {
       <label htmlFor='order-by'>Order by: </label>
       <select
         id='order-by'
+        title='Order by...'
         value={orderBy}
         onChange={({ target }) => handleChange({ orderBy: target.value })}
       >
@@ -33,6 +34,7 @@ function ProductsSorting({ updateSorting }) {
       </select>
       <button
         type='button'
+        title='Sorting direction'
         disabled={isDefault(orderBy)}
         onClick={() =>
           handleChange({

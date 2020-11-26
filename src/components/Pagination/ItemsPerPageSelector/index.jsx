@@ -16,6 +16,7 @@ function ItemsPerPageSelector({
     <div className='ItemsPerPageSelector'>
       <select
         id='items-per-page-selector'
+        title='Number of items per page'
         value={itemsPerPage}
         onChange={({ target }) => setItemsPerPage(Number(target.value))}
       >
