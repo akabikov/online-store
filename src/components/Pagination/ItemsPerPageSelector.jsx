@@ -3,7 +3,7 @@ import React from "react";
 function ItemsPerPageSelector({
   itemsPerPage,
   setItemsPerPage,
-  listOfOptions = [5, 10, 0],
+  listOfOptions = [0],
 }) {
   const itemsPerPageOptions = listOfOptions.map((el) => (
     <option key={el} value={el}>
@@ -12,17 +12,15 @@ function ItemsPerPageSelector({
   ));
 
   return (
-    <div>
-      <label>
-        {"Show "}
-        <select
-          value={itemsPerPage}
-          onChange={({ target }) => setItemsPerPage(Number(target.value))}
-        >
-          {itemsPerPageOptions}
-        </select>{" "}
-        {" items per page"}
-      </label>
+    <div className='ItemsPerPageSelector'>
+      <select
+        id='items-per-page-selector'
+        value={itemsPerPage}
+        onChange={({ target }) => setItemsPerPage(Number(target.value))}
+      >
+        {itemsPerPageOptions}
+      </select>
+      <label htmlFor='items-per-page-selector'> per page</label>
     </div>
   );
 }
