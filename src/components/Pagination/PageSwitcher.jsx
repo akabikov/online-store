@@ -17,22 +17,26 @@ function PageSwitcher({ numOfPages, currentPage, switchPage }) {
     [...Array(numOfPages)].map((_, idx) => {
       const i = idx + 1;
       return (
-        <React.Fragment key={i}>
+        <li key={i}>
           {pageLink(i)}
           {i === numOfPages || ", "}
-        </React.Fragment>
+        </li>
       );
     });
 
-  const first = currentPage > 1 && pageLink(1, "<<");
-  const prev = currentPage > 1 && pageLink(currentPage - 1, "<");
-  const next = currentPage < numOfPages && pageLink(currentPage + 1, ">");
-  const last = currentPage < numOfPages && pageLink(numOfPages, ">>");
+  const first = currentPage > 1 && <li>{pageLink(1, "<<")}</li>;
+  const prev = currentPage > 1 && <li>{pageLink(currentPage - 1, "<")}</li>;
+  const next = currentPage < numOfPages && (
+    <li>{pageLink(currentPage + 1, ">")}</li>
+  );
+  const last = currentPage < numOfPages && (
+    <li>{pageLink(numOfPages, ">>")}</li>
+  );
 
   return (
-    <div>
+    <ul className='PageSwitcher'>
       {first} {prev} {pages} {next} {last}
-    </div>
+    </ul>
   );
 }
 
