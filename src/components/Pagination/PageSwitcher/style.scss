@@ -1,0 +1,39 @@
+.PageSwitcher {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  list-style: none;
+  overflow: auto;
+
+  li {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.1rem;
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid var(--primaryColor);
+      border-radius: 4px;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+
+  .disabled {
+    visibility: hidden;
+  }
+
+  .current-page {
+    background-color: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
+    border-radius: 4px;
+
+    a {
+      color: var(--mainWhite);
+      cursor: auto;
+    }
+  }
+}
