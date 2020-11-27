@@ -19,7 +19,7 @@ function ProductsPage() {
   } = usePagination(getPaginatedProducts);
 
   return (
-    <div>
+    <div className='ProductsPage'>
       <ProductFilters />
       <div className='product-list-header'>
         <ProductsSorting />
