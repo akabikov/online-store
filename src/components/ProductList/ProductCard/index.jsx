@@ -12,7 +12,7 @@ function ProductCard({ id, title, imageUrl, price }) {
   const handleView = () => history.push(`products/${id}`);
 
   return (
-    <li className='product-card'>
+    <li className='ProductCard'>
       <div className='product-card__img-box'>
         <img src={`./${imageUrl}`} alt={title} />
       </div>
