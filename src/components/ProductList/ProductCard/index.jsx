@@ -1,27 +1,28 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { add } from "../../../redux/actions";
 import "./style.scss";
 
 function ProductCard({ id, title, imageUrl, price }) {
   const dispatch = useDispatch();
-  const handleAdd = () => dispatch(add(id));
-
-  const history = useHistory();
-  const handleView = () => history.push(`products/${id}`);
 
   return (
     <li className='ProductCard'>
-      <div className='product-card__img-box'>
+      <Link to={`products/${id}`} className='product-card__img-box'>
         <img src={`./${imageUrl}`} alt={title} />
-      </div>
-      <div className='product-card__footer'>
-        <p className='product-title'>{title}</p>
-        <p className='product-price'>{price}</p>
-        <button onClick={handleAdd}>Buy</button>
-        <button onClick={handleView}>View</button>
-      </div>
+      </Link>
+      <Link to={`products/${id}`} className='product-title'>
+        {title}
+      </Link>
+      <div className='product-price'>{price}</div>
+      <button
+        title='Add to cart'
+        className='product-card__add-button'
+        onClick={() => dispatch(add(id))}
+      >
+        Add to cart <i className='zmdi zmdi-shopping-cart-plus'></i>
+      </button>
     </li>
   );
 }

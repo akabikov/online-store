@@ -1,6 +1,7 @@
 .ProductCard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-areas: "img img" "title price" "add-button add-button";
   padding: 1rem;
   background-color: #fff;
   background-clip: initial;
@@ -11,21 +12,59 @@
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.5) 7px 10px 5px 0px;
-    cursor: pointer;
 
     .product-card__img-box img {
       transform: scale(1.02);
       transition: var(--mainTransition);
     }
+
+    .product-card__add-button {
+      opacity: 1;
+    }
+  }
+
+  .product-card__img-box {
+    grid-area: img;
   }
 
   .product-card__img-box img {
     width: 100%;
   }
 
-  .product-card__footer .product-price {
+  .product-title {
+    grid-area: title;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    height: 1.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-decoration: none;
+    color: initial;
+  }
+
+  .product-price {
+    grid-area: price;
+    justify-self: right;
+    padding-left: 0.2rem;
+
     &::before {
       content: "$";
     }
+  }
+
+  .product-card__add-button {
+    grid-area: add-button;
+    justify-self: center;
+    width: fit-content;
+    margin-top: 0.3rem;
+    padding: 0.2rem;
+    background-color: var(--primaryColor);
+    color: var(--mainWhite);
+    opacity: 0.5;
+    text-decoration: none;
+    border: 1px solid var(--primaryColor);
+    border-radius: 4px;
+    transition: var(--mainTransition);
+    cursor: pointer;
   }
 }
