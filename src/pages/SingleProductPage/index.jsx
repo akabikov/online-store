@@ -1,8 +1,9 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductById } from "../redux/selectors";
-import { add } from "../redux/actions";
+import { getProductById } from "../../redux/selectors";
+import { add } from "../../redux/actions";
+import "./style.scss";
 
 export default function SingleProductPage() {
   const { id } = useParams();
