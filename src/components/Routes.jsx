@@ -1,27 +1,24 @@
-import React from "react";
+import React, { Suspense, lazy, useMemo } from "react";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import ProductsPage from "../pages/ProductsPage";
-import SingleProductPage from "../pages/SingleProductPage";
-import CartPage from "../pages/CartPage";
-import ContactPage from "../pages/ContactPage";
-import AboutPage from "../pages/AboutPage";
-import NotFound from "../pages/NotFound";
+import pages from "../pages";
 
-export default function Routes(props) {
+export default function Routes() {
+  const routes = useMemo(
+    () =>
+      pages.map(({ page, path }) => (
+        <Route
+          key={page}
+          exact={Boolean(path)}
+          path={path}
+          component={lazy(() => import(`../pages/${page}`))}
+        />
+      )),
+    []
+  );
+
   return (
-    <Switch>
-      <Route
-        exact
-        path={"/products/:id"}
-        render={() => <SingleProductPage />}
-      />
-      <Route exact path={"/products"} render={() => <ProductsPage />} />
-      <Route exact path={"/cart"} render={() => <CartPage />} />
-      <Route exact path={"/contact"} render={() => <ContactPage />} />
-      <Route exact path={"/about"} render={() => <AboutPage />} />
-      <Route exact path={"/"} render={() => <HomePage />} />
-      <Route render={() => <NotFound />} />
-    </Switch>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>{routes}</Switch>
+    </Suspense>
   );
 }

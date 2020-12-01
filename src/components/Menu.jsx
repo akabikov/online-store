@@ -1,14 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import pages from "../pages";
 import "./Menu.scss";
 
-const links = [
-  { path: "/", title: "Home" },
-  { path: "/products", title: "Products" },
-  { path: "/cart", title: "Cart" },
-  { path: "/contact", title: "Contact" },
-  { path: "/about", title: "About" },
-];
+const links = pages
+  .filter(({ title }) => title)
+  .sort((a, b) => a.menuIdx - b.menuIdx);
 
 export default function Menu({ isOpen, closeMe }) {
   const linkItems = links.map(({ path, title }) => (
