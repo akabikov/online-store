@@ -1,0 +1,84 @@
+.SingleProductPage {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+
+  & > * {
+    flex: 1 1 350px;
+    padding: 0.5rem 1rem;
+  }
+
+  .product-img {
+    flex: 0 1 auto;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 70ch;
+
+    &__main {
+      flex: 1;
+    }
+
+    &__title {
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    &__company,
+    &__price {
+      text-align: start;
+      margin: 0.5rem 0;
+
+      h3 {
+        display: inline-block;
+      }
+
+      span {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__description {
+      text-align: justify;
+      margin-top: 1rem;
+
+      h3 {
+        margin: 0.5rem 0;
+      }
+
+      p {
+        text-indent: 1rem;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    &__add-button,
+    &__back-button {
+      display: inline-block;
+      background-color: var(--primaryColor);
+      color: var(--mainWhite);
+      text-decoration: none;
+      font-size: inherit;
+      font-family: inherit;
+      border: 1px solid var(--primaryColor);
+      border-radius: 4px;
+      padding: 0.2rem;
+      margin: 1rem;
+      cursor: pointer;
+    }
+  }
+}
