@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./CartItem.scss";
+import "./style.scss";
 
 function CartItem({ id, num, title, price, imageUrl, edit, remove }) {
   function handler({ currentTarget: { value, name } }) {

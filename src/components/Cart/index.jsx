@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { edit, remove, clear } from "../redux/actions";
+import { edit, remove, clear } from "../../redux/actions";
 import CartItem from "./CartItem";
-import "./Cart.scss";
+import "./style.scss";
 
 function Cart({ isOpen, closeMe, cart, products, edit, remove, clear }) {
   const cartItems = cart.keys.map((id) => (
