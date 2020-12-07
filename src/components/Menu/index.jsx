@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import pages from "../pages";
-import "./Menu.scss";
+import pages from "../../pages";
+import "./style.scss";
 
 const links = pages
   .filter(({ title }) => title)
