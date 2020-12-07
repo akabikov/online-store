@@ -10,7 +10,7 @@ const links = pages
 export default function Menu({ isOpen, closeMe }) {
   const linkItems = links.map(({ path, title }) => (
     <li key={path}>
-      <NavLink exact to={path} onClick={closeMe}>
+      <NavLink exact to={path} activeClassName='current-page' onClick={closeMe}>
         {title}
       </NavLink>
     </li>
