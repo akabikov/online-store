@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import pages from "../pages";
-import "./Menu.scss";
+import pages from "../../pages";
+import "./style.scss";
 
 const links = pages
   .filter(({ title }) => title)
@@ -10,7 +10,7 @@ const links = pages
 export default function Menu({ isOpen, closeMe }) {
   const linkItems = links.map(({ path, title }) => (
     <li key={path}>
-      <NavLink exact to={path} onClick={closeMe}>
+      <NavLink exact to={path} activeClassName='current-page' onClick={closeMe}>
         {title}
       </NavLink>
     </li>

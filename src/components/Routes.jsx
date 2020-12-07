@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useMemo } from "react";
 import { Switch, Route } from "react-router-dom";
+import Loader from "./Loader";
 import pages from "../pages";
 
 export default function Routes() {
@@ -17,7 +18,7 @@ export default function Routes() {
   );
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <Switch>{routes}</Switch>
     </Suspense>
   );
