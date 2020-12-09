@@ -1,12 +1,8 @@
 .CartItem {
-  display: grid;
-  grid-template-columns: 80px auto 3rem;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "img title price"
-    "img amount delete";
-
-  place-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0.5rem 0;
 
   button {
     background: transparent;
@@ -16,16 +12,38 @@
   }
 
   .cart-item__img {
-    grid-area: img;
+    flex: 0 0 80px;
 
     img {
       width: 100%;
     }
   }
 
+  .cart-item__title-amount-wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-between;
+    padding: 0.5rem 0;
+  }
+
+  .cart-item__price-remove-wrapper {
+    flex: 0 1 15%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    min-width: 3rem;
+    max-width: 6rem;
+    padding: 0.5rem 0;
+  }
+
   .cart-item__title {
     text-transform: uppercase;
-    grid-area: title;
+    flex: 0 1 18rem;
   }
 
   .cart-item__amount {
@@ -51,14 +69,28 @@
   }
 
   .cart-item__price {
-    grid-area: price;
+    flex: 0 0 3rem;
+  }
 
-    &:before {
-      content: "$";
+  .cart-item__price-apiece {
+    font-size: 0.75rem;
+    color: var(--darkGrey);
+
+    &::before {
+      content: "(";
+    }
+
+    &::after {
+      content: ")";
     }
   }
 
   .cart-item__remove {
-    grid-area: delete;
+    flex: 0 0 3rem;
+    align-self: start;
+  }
+
+  .hidden {
+    visibility: hidden;
   }
 }
