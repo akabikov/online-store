@@ -10,13 +10,13 @@ export default function Header({ openCloseMenu, openCloseCart }) {
         aria-controls='navigation'
         onClick={openCloseMenu}
       >
-        <i class='zmdi zmdi-menu zmdi-hc-2x'></i>
+        <i className='zmdi zmdi-menu zmdi-hc-2x'></i>
       </button>
       <Link to='/'>
         <img src='/media/static/logo.svg' alt='store logo' />
       </Link>
       <button onClick={openCloseCart}>
-        <i class='zmdi zmdi-shopping-cart zmdi-hc-2x'></i>
+        <i className='zmdi zmdi-shopping-cart zmdi-hc-2x'></i>
       </button>
     </header>
   );
