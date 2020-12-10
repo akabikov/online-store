@@ -1,47 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { edit, remove, clear } from "../../redux/actions";
-import CartItem from "./CartItem";
+import CartList from "./CartList";
 import "./style.scss";
 
-function Cart({ isOpen, closeMe, cart, products, edit, remove, clear }) {
-  const cartItems = cart.keys.map((id) => (
-    <CartItem
-      key={id}
-      id={id}
-      {...cart.products[id]}
-      {...products[id]}
-      edit={edit}
-      remove={remove}
-    />
-  ));
-
-  const cartSum = cart.keys.reduce(
-    (sum, id) => sum + products[id].price * cart.products[id].num,
-    0
-  );
-
+function Cart({ isOpen, closeMe }) {
+  const isListEmpty = useSelector(({ cart }) => !cart?.keys?.length);
   return (
     <div className={"Cart" + (isOpen ? "" : " hidden")}>
-      {cartItems.length ? (
-        <>
-          <ul>{cartItems}</ul>
-          <div className='cart__total'>
-            <span> {"Cart total: "}</span>
-            <span className='cart__total-sum'>{cartSum}</span>
-          </div>
-          <button
-            className='cart__button'
-            onClick={() => {
-              clear();
-              closeMe();
-            }}
-          >
-            Clear cart
-          </button>
-        </>
-      ) : (
+      {isListEmpty ? (
         <>
           <div>Cart is empty</div>
           <Link
@@ -54,11 +21,11 @@ function Cart({ isOpen, closeMe, cart, products, edit, remove, clear }) {
             View products
           </Link>
         </>
+      ) : (
+        <CartList />
       )}
     </div>
   );
 }
 
-const mapStateToProps = ({ cart, products }) => ({ cart, products });
-
-export default connect(mapStateToProps, { edit, remove, clear })(Cart);
+export default Cart;
