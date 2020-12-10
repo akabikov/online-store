@@ -1,12 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { clear } from "../../redux/actions";
 import { isCartEmpty } from "../../redux/selectors";
 import CartList from "../../components/Cart/CartList";
 import "./style.scss";
 
 export default function CartPage() {
   const isListEmpty = useSelector(isCartEmpty);
+  const dispatch = useDispatch();
+  const handleClear = () => dispatch(clear());
+
   return (
     <div className='CartPage'>
       {isListEmpty ? (
@@ -17,7 +21,17 @@ export default function CartPage() {
           </Link>
         </>
       ) : (
-        <CartList />
+        <>
+          <CartList />
+          <div className='cart__footer'>
+            <Link to='/checkout' className='cart__button'>
+              Checkout
+            </Link>
+            <button className='cart__button' onClick={handleClear}>
+              Clear cart
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
