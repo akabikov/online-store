@@ -78,3 +78,5 @@ export const getCartSum = createSelector(
       0
     )
 );
+
+export const isCartEmpty = ({ cart }) => !cart?.keys?.length;
