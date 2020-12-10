@@ -5,14 +5,10 @@ import Content from "./components/Content";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
-import useToggleState from "./hooks/useToggleState";
 import { loadProducts } from "./redux/actions";
 import "./App.scss";
 
 function App({ loadProducts }) {
-  const [isMenuOpen, openCloseMenu] = useToggleState();
-  const [isCartOpen, openCloseCart] = useToggleState();
-
   useEffect(() => {
     const fetchProducts = async () => await loadProducts();
     fetchProducts();
@@ -20,10 +16,8 @@ function App({ loadProducts }) {
 
   return (
     <>
-      <Header openCloseMenu={openCloseMenu} openCloseCart={openCloseCart} />
+      <Header menu={<Menu />} cart={<Cart />} />
       <Content />
-      <Menu isOpen={isMenuOpen} closeMe={openCloseMenu} />
-      <Cart isOpen={isCartOpen} closeMe={openCloseCart} />
       <Footer />
     </>
   );

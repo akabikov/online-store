@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { clear } from "../../redux/actions";
 import { isCartEmpty } from "../../redux/selectors";
 import CartList from "./CartList";
+import { CartContext } from "./context";
 import "./style.scss";
 
-function Cart({ isOpen, closeMe }) {
+function Cart() {
+  const { isOpen, closeMe } = useContext(CartContext);
+
   const isListEmpty = useSelector(isCartEmpty);
   const dispatch = useDispatch();
   const handleClear = () => {

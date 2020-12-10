@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import pages from "../../pages";
+import { MenuContext } from "./context";
 import "./style.scss";
 
 const links = pages
   .filter(({ title }) => title)
   .sort((a, b) => a.menuIdx - b.menuIdx);
 
-export default function Menu({ isOpen, closeMe }) {
+function Menu() {
+  const { isOpen, closeMe } = useContext(MenuContext);
+
   const linkItems = links.map(({ path, title }) => (
     <li key={path}>
       <NavLink exact to={path} activeClassName='current-page' onClick={closeMe}>
@@ -22,3 +25,5 @@ export default function Menu({ isOpen, closeMe }) {
     </nav>
   );
 }
+
+export default Menu;
