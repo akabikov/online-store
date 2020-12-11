@@ -16,4 +16,9 @@
     border: none;
     color: var(--primaryColor);
   }
+
+  &.inverted {
+    background: transparent;
+    color: var(--primaryColor);
+  }
 }
