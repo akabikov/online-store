@@ -19,12 +19,13 @@ function Button({
     <Btn
       to={link}
       className={
-        "button" + (icon ? " button-icon" : "") + (inverted ? " inverted" : "")
+        "button" + (text ? "" : " button-icon") + (inverted ? " inverted" : "")
       }
       type={isButton ? type : undefined}
       {...props}
     >
-      {icon ? icon : text}
+      {text}
+      {typeof icon === "string" ? <i className={icon}></i> : icon}
     </Btn>
   );
 }
