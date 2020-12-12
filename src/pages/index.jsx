@@ -12,5 +12,5 @@ export default [
   { page: "CheckoutPage", path: "/checkout" },
   { page: "SuccessPage", path: "/success" },
   { page: "HomePage", path: "/", title: "Home", menuIdx: 0 },
-  { page: "NotFound" },
+  { page: "NotFoundPage" },
 ];
