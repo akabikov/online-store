@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { clear } from "../../redux/actions";
 import { isCartEmpty } from "../../redux/selectors";
 import CartList from "../../components/Cart/CartList";
+import Button from "../../components/Button";
 import "./style.scss";
 
 export default function CartPage() {
@@ -16,20 +16,14 @@ export default function CartPage() {
       {isListEmpty ? (
         <>
           <div>Cart is empty</div>
-          <Link to='/products' className='cart__button'>
-            View products
-          </Link>
+          <Button text='View products' link='/products' />
         </>
       ) : (
         <>
           <CartList />
           <div className='cart__footer'>
-            <Link to='/checkout' className='cart__button'>
-              Checkout
-            </Link>
-            <button className='cart__button' onClick={handleClear}>
-              Clear cart
-            </button>
+            <Button text='Checkout' link='/checkout' />
+            <Button text='Clear cart' inverted onClick={handleClear} />
           </div>
         </>
       )}

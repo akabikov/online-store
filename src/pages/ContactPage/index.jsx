@@ -1,5 +1,6 @@
 import React from "react";
 import useToggleState from "../../hooks/useToggleState";
+import Button from "../../components/Button";
 import "./style.scss";
 
 export default function ContactPage() {
@@ -24,7 +25,7 @@ export default function ContactPage() {
             rows='10'
             placeholder='Your message...'
           ></textarea>
-          <input type='submit' value='Send' />
+          <Button type='submit' text='Send' />
         </form>
       )}
     </section>

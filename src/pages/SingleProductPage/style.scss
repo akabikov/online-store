@@ -65,20 +65,5 @@
       justify-content: center;
       margin-top: 1.5rem;
     }
-
-    &__add-button,
-    &__back-button {
-      display: inline-block;
-      background-color: var(--primaryColor);
-      color: var(--mainWhite);
-      text-decoration: none;
-      font-size: inherit;
-      font-family: inherit;
-      border: 1px solid var(--primaryColor);
-      border-radius: 4px;
-      padding: 0.2rem;
-      margin: 1rem;
-      cursor: pointer;
-    }
   }
 }

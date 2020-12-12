@@ -11,24 +11,17 @@
 
     & > * {
       display: block;
-      background: var(--mainWhite);
-      border-radius: 0.5rem;
-      border: 2px solid var(--darkGrey);
       font-family: inherit;
       font-size: inherit;
       padding: 0.375rem 0.75rem;
       margin: 0.5rem 0;
-      transition: var(--mainTransition);
+    }
 
-      &[type="submit"] {
-        background-color: var(--primaryColor);
-        color: var(--mainWhite);
-        text-decoration: none;
-        border: 1px solid var(--primaryColor);
-        border-radius: 4px;
-        // padding: 0.2rem;
-        cursor: pointer;
-      }
+    input,
+    textarea {
+      border: 2px solid var(--darkGrey);
+      border-radius: 0.5rem;
+      transition: var(--mainTransition);
 
       &:focus {
         border-color: #80bdff;

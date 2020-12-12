@@ -56,15 +56,12 @@
     grid-area: add-button;
     justify-self: center;
     width: fit-content;
-    margin-top: 0.3rem;
-    padding: 0.2rem;
-    background-color: var(--primaryColor);
-    color: var(--mainWhite);
     opacity: 0.5;
-    text-decoration: none;
-    border: 1px solid var(--primaryColor);
-    border-radius: 4px;
-    transition: var(--mainTransition);
-    cursor: pointer;
+    font-size: 0.8rem;
+
+    & > * {
+      margin: 0;
+      margin-top: 0.3rem;
+    }
   }
 }

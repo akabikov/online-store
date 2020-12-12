@@ -42,7 +42,13 @@ function ProductsSorting({ updateSorting }) {
           })
         }
       >
-        <i className='zmdi zmdi-swap-vertical'></i>
+        <i
+          className={
+            "zmdi zmdi-sort-" +
+            (orderBy === "price" ? "amount-" : "") +
+            (direction === "descending" ? "desc" : "asc")
+          }
+        ></i>
       </button>
     </form>
   );

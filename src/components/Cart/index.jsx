@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { clear } from "../../redux/actions";
 import { isCartEmpty } from "../../redux/selectors";
 import CartList from "./CartList";
+import Button from "../Button";
 import { CartContext } from "./context";
 import "./style.scss";
 
@@ -22,20 +22,14 @@ function Cart() {
       {isListEmpty ? (
         <>
           <div>Cart is empty</div>
-          <Link to='/products' className='cart__button' onClick={closeMe}>
-            View products
-          </Link>
+          <Button text='View products' link='/products' onClick={closeMe} />
         </>
       ) : (
         <>
           <CartList />
           <div className='cart__footer'>
-            <Link to='/cart' className='cart__button' onClick={closeMe}>
-              Cart page
-            </Link>
-            <button className='cart__button' onClick={handleClear}>
-              Clear cart
-            </button>
+            <Button text='Cart page' link='/cart' onClick={closeMe} />
+            <Button text='Clear cart' inverted onClick={handleClear} />
           </div>
         </>
       )}

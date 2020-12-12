@@ -24,13 +24,6 @@
   }
 
   button[type="reset"] {
-    display: inline-block;
-    background-color: var(--primaryColor);
-    color: var(--mainWhite);
-    text-decoration: none;
-    border: 1px solid var(--primaryColor);
-    border-radius: 4px;
-    padding: 0.2rem;
-    cursor: pointer;
+    font-size: 0.8rem;
   }
 }

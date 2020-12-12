@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCartItem } from "../../../../redux/selectors";
 import { edit, remove } from "../../../../redux/actions";
+import Button from "../../../Button";
 import "./style.scss";
 
 function CartItem({ id }) {
@@ -35,9 +36,11 @@ function CartItem({ id }) {
         </div>
 
         <form className='cart-item__amount'>
-          <button type='button' name='decrement' onClick={handler}>
-            <i className='zmdi zmdi-minus-circle zmdi-hc-2x'></i>
-          </button>
+          <Button
+            icon='zmdi zmdi-minus-circle'
+            name='decrement'
+            onClick={handler}
+          />
           <input
             type='number'
             inputMode='numeric'
@@ -46,9 +49,11 @@ function CartItem({ id }) {
             min='1'
             onChange={handler}
           />
-          <button type='button' name='increment' onClick={handler}>
-            <i className='zmdi zmdi-plus-circle zmdi-hc-2x'></i>
-          </button>
+          <Button
+            icon='zmdi zmdi-plus-circle'
+            name='increment'
+            onClick={handler}
+          />
         </form>
       </div>
       <div className='cart-item__price-remove-wrapper'>
@@ -59,9 +64,7 @@ function CartItem({ id }) {
           </div>
         </div>
         <div className='cart-item__remove'>
-          <button type='button' name='remove' onClick={handler}>
-            <i className='zmdi zmdi-delete zmdi-hc-2x'></i>
-          </button>
+          <Button icon='zmdi zmdi-delete' name='remove' onClick={handler} />
         </div>
       </div>
     </li>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useToggleState from "../../hooks/useToggleState";
+import Button from "../Button";
 import { MenuContext } from "../Menu/context";
 import { CartContext } from "../Cart/context";
 import "./style.scss";
@@ -12,19 +13,22 @@ function Header({ menu, cart }) {
   return (
     <>
       <header className='Header'>
-        <button
+        <Button
+          icon='zmdi zmdi-menu'
           aria-label='Menu'
-          aria-controls='navigation'
+          style={{ color: "inherit" }}
           onClick={openCloseMenu}
-        >
-          <i className='zmdi zmdi-menu zmdi-hc-2x'></i>
-        </button>
-        <Link to='/'>
-          <img src='/media/static/logo.svg' alt='store logo' />
-        </Link>
-        <button onClick={openCloseCart}>
-          <i className='zmdi zmdi-shopping-cart zmdi-hc-2x'></i>
-        </button>
+        />
+        <Button
+          icon={<img src='/media/static/logo.svg' alt='store logo' />}
+          link='/'
+        />
+        <Button
+          icon='zmdi zmdi-shopping-cart'
+          aria-label='Cart'
+          style={{ color: "inherit" }}
+          onClick={openCloseCart}
+        />
       </header>
       <MenuContext.Provider
         value={{ isOpen: isMenuOpen, closeMe: openCloseMenu }}

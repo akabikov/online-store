@@ -7,6 +7,7 @@ import objectFromArray from "../../helpers/objectFromArray";
 import SearchFilter from "./SearchFilter";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
+import Button from "../Button";
 import "./style.scss";
 
 const FILTERING_DELAY = 1000; // ms
@@ -35,9 +36,7 @@ function ProductFilters({ storeFilters, updateFilters }) {
         <PriceFilter {...filters} setFilter={setFilter} />
         <BrandFilter {...filters} setFilter={setFilter} />
       </div>
-      <button type='reset' onClick={resetAll}>
-        Reset all
-      </button>
+      <Button type='reset' text='Reset all' onClick={resetAll} />
     </form>
   );
 }

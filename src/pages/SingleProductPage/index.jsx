@@ -1,8 +1,9 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductById } from "../../redux/selectors";
 import { add } from "../../redux/actions";
+import Button from "../../components/Button";
 import "./style.scss";
 
 export default function SingleProductPage() {
@@ -34,12 +35,8 @@ export default function SingleProductPage() {
           </div>
         </div>
         <div className='product-info__footer'>
-          <button className='product-info__add-button' onClick={handleAdd}>
-            Add to cart
-          </button>
-          <Link to='/products' className='product-info__back-button'>
-            Back to products
-          </Link>
+          <Button text='Add to cart' onClick={handleAdd} />
+          <Button text='Back to products' link='/products' />
         </div>
       </div>
     </section>
