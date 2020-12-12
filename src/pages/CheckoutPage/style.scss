@@ -1,0 +1,37 @@
+.CheckoutPage {
+  background: var(--mainGrey);
+  padding: 1rem;
+  height: 100%;
+
+  &__contact-form {
+    display: flex;
+    flex-direction: column;
+    width: clamp(50%, 500px, 100%);
+    margin: auto;
+
+    & > * {
+      display: block;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 0.375rem 0.75rem;
+      margin: 0.5rem 0;
+    }
+
+    input,
+    textarea {
+      border: 2px solid var(--darkGrey);
+      border-radius: 0.5rem;
+      transition: var(--mainTransition);
+
+      &:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+}
