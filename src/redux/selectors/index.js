@@ -13,6 +13,11 @@ export const getCompanies = createSelector(getProductsArray, (products) =>
   Array.from(new Set(products.map(({ company }) => company))).sort()
 );
 
+export const getFeaturedProducts = createSelector(
+  getProductsArray,
+  (products) => products.filter(({ featured }) => featured)
+);
+
 export const getFilters = (state) => state.filters;
 
 export const getProductsByFilters = createSelector(
