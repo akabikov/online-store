@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clear } from "../../redux/actions";
-import { isCartEmpty } from "../../redux/selectors";
+import { isCartEmpty } from "../../redux/selectors/cart";
 import CartList from "./CartList";
 import Button from "../Button";
 import { CartContext } from "./context";

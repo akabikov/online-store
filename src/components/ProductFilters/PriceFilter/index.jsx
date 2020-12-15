@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getFilteredProductsPriceRange } from "../../../redux/selectors";
+import { getFilteredProductsPriceRange } from "../../../redux/selectors/filters";
 import "./style.scss";
 
 const FILTER_NAME = "price";

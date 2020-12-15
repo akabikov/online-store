@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getFeaturedProducts } from "../../redux/selectors";
+import { getFeaturedProducts } from "../../redux/selectors/products";
 import ProductList from "../../components/ProductList";
 import Button from "../../components/Button";
 import "./style.scss";

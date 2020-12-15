@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getCart, getCartSum } from "../../../redux/selectors";
+import { getCart, getCartSum } from "../../../redux/selectors/cart";
 import CartItem from "./CartItem";
 import "./style.scss";
 

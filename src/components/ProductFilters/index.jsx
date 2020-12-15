@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { connect } from "react-redux";
 import { updateFilters } from "../../redux/actions";
-import { getFilters } from "../../redux/selectors";
+import { getFilters } from "../../redux/selectors/filters";
 import debounce from "../../helpers/debounce";
 import objectFromArray from "../../helpers/objectFromArray";
 import SearchFilter from "./SearchFilter";

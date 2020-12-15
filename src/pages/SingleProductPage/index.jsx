@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductById } from "../../redux/selectors";
+import { getProductById } from "../../redux/selectors/products";
 import { add } from "../../redux/actions";
 import Button from "../../components/Button";
 import "./style.scss";

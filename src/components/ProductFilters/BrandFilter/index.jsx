@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getCompanies } from "../../../redux/selectors";
+import { getCompanies } from "../../../redux/selectors/products";
 import objectFromArray from "../../../helpers/objectFromArray";
 import BrandItem from "./BrandItem";
 import "./style.scss";

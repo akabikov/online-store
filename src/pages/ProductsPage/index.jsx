@@ -4,7 +4,7 @@ import ProductsSorting from "../../components/ProductsSorting";
 import ProductList from "../../components/ProductList";
 import ItemsPerPageSelector from "../../components/Pagination/ItemsPerPageSelector";
 import PageSwitcher from "../../components/Pagination/PageSwitcher";
-import { getPaginatedProducts } from "../../redux/selectors";
+import { getPaginatedProducts } from "../../redux/selectors/sorting";
 import usePagination from "../../hooks/usePagination";
 import "./style.scss";
 

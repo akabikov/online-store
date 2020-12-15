@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clear } from "../../redux/actions";
-import { isCartEmpty } from "../../redux/selectors";
+import { isCartEmpty } from "../../redux/selectors/cart";
 import CartList from "../../components/Cart/CartList";
 import Button from "../../components/Button";
 import "./style.scss";
