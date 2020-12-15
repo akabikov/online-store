@@ -10,4 +10,18 @@
   background: var(--mainGrey);
   border-bottom: 3px solid var(--primaryColor);
   z-index: 1;
+
+  .logo {
+    font-size: 1.75rem;
+    text-decoration: none;
+    font-weight: bold;
+
+    :first-child {
+      color: var(--mainBlack);
+    }
+
+    :last-child {
+      color: var(--primaryColor);
+    }
+  }
 }

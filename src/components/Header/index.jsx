@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import useToggleState from "../../hooks/useToggleState";
 import Button from "../Button";
 import { MenuContext } from "../Menu/context";
@@ -18,10 +19,10 @@ function Header({ menu, cart }) {
           style={{ color: "inherit" }}
           onClick={openCloseMenu}
         />
-        <Button
-          icon={<img src='/media/static/logo.svg' alt='store logo' />}
-          link='/'
-        />
+        <Link to='/' className='logo'>
+          <span>Classic</span>
+          <span>Devices</span>
+        </Link>
         <Button
           icon='zmdi zmdi-shopping-cart'
           aria-label='Cart'
