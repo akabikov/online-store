@@ -2,6 +2,8 @@
 
 > Online store - search, view and buy
 
+![Demo screenshot](/../screenshots/products.png?raw=true)
+
 ## Table of contents
 
 - [General info](#general-info)
