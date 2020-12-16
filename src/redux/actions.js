@@ -30,7 +30,7 @@ export const clear = () => ({
 });
 
 export const loadProducts = () => async (dispatch) => {
-  const products = await loadData("../productData.json");
+  const products = await loadData("./productData.json");
 
   return dispatch({
     type: LOAD_PRODUCTS,

@@ -11,7 +11,7 @@ function HomePage() {
     <section className='HomePage'>
       <div
         className='hero'
-        style={{ backgroundImage: `url(/img/background-home.jpeg)` }}
+        style={{ backgroundImage: `url(./img/background-home.jpeg)` }}
       >
         <div className='banner'>
           <h1>classic devices</h1>
