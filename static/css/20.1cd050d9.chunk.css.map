@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA,aACE,0BAA2B,CAC3B,YAAa,CACb,WAAY","file":"20.1cd050d9.chunk.css","sourcesContent":[".SuccessPage {\r\n  background: var(--mainGrey);\r\n  padding: 1rem;\r\n  height: 100%;\r\n}\r\n"]}
