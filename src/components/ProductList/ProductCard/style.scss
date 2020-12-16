@@ -25,10 +25,18 @@
 
   .product-card__img-box {
     grid-area: img;
+    position: relative;
+    padding-bottom: 100%;
+    height: 0;
+    overflow: hidden;
   }
 
   .product-card__img-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
   }
 
   .product-title {
@@ -58,10 +66,5 @@
     width: fit-content;
     opacity: 0.5;
     font-size: 0.8rem;
-    padding-top: 0.5rem;
-
-    & > button {
-      margin: 0;
-    }
   }
 }
