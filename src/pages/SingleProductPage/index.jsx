@@ -16,7 +16,7 @@ export default function SingleProductPage() {
   return (
     <section className='SingleProductPage'>
       <div className='product-img'>
-        <img src={`/${imageUrl}`} alt={title} />
+        <img src={`${process.env.PUBLIC_URL}/${imageUrl}`} alt={title} />
       </div>
       <div className='product-info'>
         <div className='product-info__main'>
