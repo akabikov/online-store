@@ -10,7 +10,8 @@ import "./App.scss";
 
 function App({ loadProducts }) {
   useEffect(() => {
-    const fetchProducts = async () => await loadProducts();
+    const fetchProducts = async () =>
+      await loadProducts(`${process.env.PUBLIC_URL}/productData.json`);
     fetchProducts();
   }, [loadProducts]);
 

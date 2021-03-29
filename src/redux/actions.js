@@ -29,8 +29,8 @@ export const clear = () => ({
   type: CLEAR_CART,
 });
 
-export const loadProducts = () => async (dispatch) => {
-  const products = await loadData("./productData.json");
+export const loadProducts = (url) => async (dispatch) => {
+  const products = await loadData(url);
 
   return dispatch({
     type: LOAD_PRODUCTS,
