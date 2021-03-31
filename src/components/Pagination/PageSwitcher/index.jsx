@@ -26,11 +26,12 @@ function PageSwitcher({ numOfPages, currentPage, switchPage }) {
       );
     });
 
-  const getEdgeLink = (excludedPage, name, page, icon) => (
-    <li className={!(currentPage - excludedPage) ? "disabled" : undefined}>
-      {pageLink(page, `Go to the ${name} page`, icon)}
-    </li>
-  );
+  const getEdgeLink = (excludedPage, name, page, icon) =>
+    numOfPages > 1 && (
+      <li className={!(currentPage - excludedPage) ? "disabled" : undefined}>
+        {pageLink(page, `Go to the ${name} page`, icon)}
+      </li>
+    );
 
   const prev = getEdgeLink(
     1,
