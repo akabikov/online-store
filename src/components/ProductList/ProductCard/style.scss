@@ -2,6 +2,9 @@
   display: grid;
   grid-template-columns: auto min-content;
   grid-template-areas: "img img" "title price" "add-button add-button";
+  justify-self: center;
+  width: 100%;
+  max-width: calc(400px + 2rem);
   padding: 1rem;
   background-color: #fff;
   background-clip: initial;
