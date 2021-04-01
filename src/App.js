@@ -6,12 +6,13 @@ import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import { loadProducts } from "./redux/actions";
+import { getPublicUrl } from "./helpers/getPublicUrl";
 import "./App.scss";
 
 function App({ loadProducts }) {
   useEffect(() => {
     const fetchProducts = async () =>
-      await loadProducts(`${process.env.PUBLIC_URL}/productData.json`);
+      await loadProducts(getPublicUrl("productData.json"));
     fetchProducts();
   }, [loadProducts]);
 
