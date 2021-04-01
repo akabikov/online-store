@@ -28,7 +28,7 @@ function CartItem({ id }) {
   return (
     <li className='CartItem'>
       <div className='cart-item__img'>
-        <img src={`./${imageUrl}`} alt={title} />
+        <img src={imageUrl} alt={title} />
       </div>
       <div className='cart-item__title-amount-wrapper'>
         <div className='cart-item__title'>

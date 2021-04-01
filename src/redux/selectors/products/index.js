@@ -1,11 +1,22 @@
 import { createSelector } from "reselect";
+import { getPublicUrl } from "../../../helpers/getPublicUrl";
 
 export const getProducts = (state) => state.products;
-export const getProductsArray = createSelector(getProducts, (products) =>
-  Object.entries(products).map(([id, product]) => ({ id, ...product }))
-);
 
-export const getProductById = (state, id) => getProducts(state)?.[id];
+export function _getProductById(products, id) {
+  const product = products?.[id];
+  return { ...product, imageUrl: getPublicUrl(product?.imageUrl) };
+}
+
+export const getProductById = (state, id) =>
+  _getProductById(getProducts(state), id);
+
+export const getProductsArray = createSelector(getProducts, (products) =>
+  Object.keys(products).map((id) => ({
+    id,
+    ..._getProductById(products, id),
+  }))
+);
 
 export const getCompanies = createSelector(getProductsArray, (products) =>
   Array.from(new Set(products.map(({ company }) => company))).sort()

@@ -12,7 +12,7 @@ function ProductCard({ id, title, imageUrl, price }) {
   return (
     <li className='ProductCard'>
       <Link to={`products/${id}`} className='product-card__img-box'>
-        <img src={`./${imageUrl}`} alt={title} />
+        <img src={imageUrl} alt={title} />
       </Link>
       <Link to={`products/${id}`} className='product-title'>
         {title}

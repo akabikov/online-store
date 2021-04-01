@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 import { getProducts } from "../products";
+import { _getProductById } from "../products";
 
 export const getCart = (state) => state.cart;
 
@@ -7,7 +8,10 @@ export const getCartItem = createSelector(
   getCart,
   getProducts,
   (_, id) => id,
-  (cart, products, id) => ({ ...cart.products[id], ...products[id] })
+  (cart, products, id) => ({
+    ...cart.products[id],
+    ..._getProductById(products, id),
+  })
 );
 
 export const getCartSum = createSelector(
