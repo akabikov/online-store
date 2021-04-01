@@ -7,7 +7,7 @@ function ProductList({ products }) {
     ? products.map(({ id, ...product }) => (
         <ProductCard key={id} id={id} {...product} />
       ))
-    : null;
+    : "Sorry, your search returned no results...";
 
   return <ul className='product-list'>{productList}</ul>;
 }
