@@ -1,1 +1,0 @@
-{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA,UACE,+BAAkC,CAClC,aAAc","file":"3.2012e637.chunk.css","sourcesContent":[".CartPage {\r\n  max-width: clamp(60%, 700px, 100%);\r\n  margin: 0 auto;\r\n}\r\n"]}
