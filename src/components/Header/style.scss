@@ -24,4 +24,22 @@
       color: var(--primaryColor);
     }
   }
+
+  .cart-button {
+    position: relative;
+
+    .cart-counter {
+      position: absolute;
+      top: 0;
+      right: -0.5rem;
+      text-align: center;
+      width: 1rem;
+      height: 1rem;
+      background-color: var(--mainWhite);
+      border: 1px solid var(--mainBlack);
+      border-radius: 50%;
+      color: var(--mainBlack);
+      font-size: 0.65rem;
+    }
+  }
 }

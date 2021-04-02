@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getCartQuantity } from "../../redux/selectors/cart";
 import useToggleState from "../../hooks/useToggleState";
 import Button from "../Button";
 import { MenuContext } from "../Menu/context";
@@ -9,6 +11,7 @@ import "./style.scss";
 function Header({ menu, cart }) {
   const [isMenuOpen, openCloseMenu] = useToggleState();
   const [isCartOpen, openCloseCart] = useToggleState();
+  const cartQuantity = useSelector(getCartQuantity);
 
   return (
     <>
@@ -23,12 +26,15 @@ function Header({ menu, cart }) {
           <span>Classic</span>
           <span>Devices</span>
         </Link>
-        <Button
-          icon='zmdi zmdi-shopping-cart'
-          aria-label='Cart'
-          style={{ color: "inherit" }}
-          onClick={openCloseCart}
-        />
+        <div className='cart-button'>
+          <Button
+            icon='zmdi zmdi-shopping-cart'
+            aria-label='Cart'
+            style={{ color: "inherit" }}
+            onClick={openCloseCart}
+          />
+          <div className='cart-counter'>{cartQuantity}</div>
+        </div>
       </header>
       <MenuContext.Provider
         value={{ isOpen: isMenuOpen, closeMe: openCloseMenu }}

@@ -24,4 +24,8 @@ export const getCartSum = createSelector(
     )
 );
 
+export const getCartQuantity = createSelector(getCart, (cart) =>
+  cart.keys.reduce((sum, id) => sum + cart.products[id].num, 0)
+);
+
 export const isCartEmpty = ({ cart }) => !cart?.keys?.length;
