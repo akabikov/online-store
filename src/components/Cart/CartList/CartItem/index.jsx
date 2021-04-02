@@ -19,7 +19,7 @@ function CartItem({ id }) {
       {
         increment: () => edit(id, num + 1),
         decrement: () => (num - 1 ? edit(id, num - 1) : remove(id)),
-        edit: () => newNum > 0 && edit(id, newNum),
+        edit: () => (newNum > 0 ? edit(id, newNum) : edit(id, num)),
         remove: () => remove(id),
       }[name]?.()
     );
